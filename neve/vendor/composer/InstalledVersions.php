@@ -24,24 +24,24 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => 'v2.9.4',
-    'version' => '2.9.4.0',
+    'pretty_version' => 'v2.9.5',
+    'version' => '2.9.5.0',
     'aliases' => 
     array (
     ),
-    'reference' => 'bc8df286552fde35cb2256ab23c16a3748c221d9',
+    'reference' => 'a42bee7a2792ee67f5970c483acd626a911669c5',
     'name' => 'codeinwp/neve',
   ),
   'versions' => 
   array (
     'codeinwp/neve' => 
     array (
-      'pretty_version' => 'v2.9.4',
-      'version' => '2.9.4.0',
+      'pretty_version' => 'v2.9.5',
+      'version' => '2.9.5.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'bc8df286552fde35cb2256ab23c16a3748c221d9',
+      'reference' => 'a42bee7a2792ee67f5970c483acd626a911669c5',
     ),
     'codeinwp/themeisle-sdk' => 
     array (
