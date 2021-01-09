@@ -1,5 +1,5 @@
 /* 
-Theme Name: Neve Child CUL2
+Theme Name: Neve Child CUL
 Version: 1.0 
 Description: Child theme for Neve. 
 Author: Woo
@@ -8,3 +8,313 @@ Template: neve
 */  
 
 /* --------------- Theme customization starts here ----------------- */
+
+body {
+  font-display: swap;
+ } 
+
+.wp-block-button a {
+  padding: 15px!important;
+}
+
+.builder-item--nav-icon .navbar-toggle {
+    border-color: #ffffff
+}
+
+.wp-block-button a {
+	-webkit-box-shadow: 0 8px 10px -6px black!important;
+	   -moz-box-shadow: 0 8px 10px -6px black!important;
+	        box-shadow: 0 8px 10px -6px black!important;
+}
+
+.button {
+	-webkit-box-shadow: 0 8px 10px -6px black!important;
+	   -moz-box-shadow: 0 8px 10px -6px black!important;
+	        box-shadow: 0 8px 10px -6px black!important;
+}
+/*Add gradients tu bottons*/
+.woocommerce-button, .button.alt, .single_add_to_cart_button, .is-style-primary, .heading-button a, .xoo-wsc-cart, .xoo-wsc-chkt, .xoo-wsc-cont {
+  background: rgb(163,116,221)!important;
+  background: linear-gradient(90deg, rgba(163,116,221,1) 0%, rgba(70,192,222,1) 100%)!important;
+}
+.ufaq-faq-category-title {
+  background: rgb(163,116,221)!important;
+  background: linear-gradient(90deg, rgba(163,116,221,1) 0%, rgba(70,192,222,1) 100%)!important;
+  color: #ffffff!important;
+  text-align: center;
+  -webkit-box-shadow: 0 8px 10px -6px black!important;
+  -moz-box-shadow: 0 8px 10px -6px black!important;
+  box-shadow: 0 8px 10px -6px black!important;
+}
+.pay, .payment-reminder {
+  background: rgb(221,116,116)!important;
+  background: linear-gradient(90deg, rgba(221,116,116,1) 0%, rgba(222,140,70,1) 100%)!important;
+  color: #ffffff!important;
+}
+
+
+/*orders table in my account separate action buttons*/
+.woocommerce-orders-table a {
+  margin-right: 5px!important;
+  margin-top: 2px!important;
+  padding: 10px!important;
+  font-size: 15px!important;
+}
+
+/*botón de filtros*/
+.nv-sidebar-toggle {
+
+background-color:#a374dd;
+  color:#ffffff!important;
+  padding: 2px 10px 2px 10px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 8px 10px -6px black!important;
+	   -moz-box-shadow: 0 8px 10px -6px black!important;
+	        box-shadow: 0 8px 10px -6px black!important;
+}
+
+.product-category {
+  text-align: center;
+}
+
+.mp-img-ticket {
+  display:none;
+}
+
+mark {
+    background-color: #ffffff;
+    color: #a374dd;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .woocommerce div.product form.cart .button {
+      vertical-align: middle;
+      float: left;
+      display: block;
+      width: 70%;
+      position: fixed;
+      bottom: 0;
+      left: 2%;
+      margin: 0px 0px 7px 0;
+      z-index: 20;
+  }
+  .woocommerce div.product form.cart .variations {
+    vertical-align: middle;
+    width: 70%;
+    position: fixed;
+    bottom: 0px;
+    left: 2%;
+    margin: 0px 0px 24px 0;
+    z-index: 19;
+    background: #ffffff;
+	}
+  
+  .woocommerce-variation-price {
+    vertical-align: middle;
+    width: 70%;
+    position: fixed;
+    bottom: 4px;
+    left: 2%;
+    margin: 0px 0px 90px 0;
+    z-index: 19;
+    background: #ffffff;
+	}
+  .woocommerce div.product span.price {
+    font-size: 17px;
+	}
+  .woocommerce div.product form.cart .variations select {
+    height: 32px;
+    font-size: 15px;
+	}
+  .woocommerce div.product form.cart .variations td.label{
+    margin-bottom: -15px;
+	}
+  /*Bigger product add to cart button*/
+  .single_add_to_cart_button {
+    height: 45px!important;
+    font-size: 15px!important;
+  	}
+  
+  .xoo-wsc-basket {
+    bottom: 90px;
+    position: fixed;
+    margin-right: 6px;
+	}
+  
+  .wc-proceed-to-checkout {
+    bottom: 0px;
+    position: fixed;
+    margin-right: 6px;
+    width: 91%;
+    border-top: 0px!important;
+    z-index:200;
+	}
+  
+  .page-id-8 .header {
+    display:none;
+	}
+  .page-id-8 .site-footer {
+    display:none;
+	}
+  
+  .page-id-8 .woocommerce-checkout .select2-container--default .select2-selection--single {
+    width: 300px!important;
+	}  
+  .page-id-8 #select2-billing_state2-container {
+    width: 300px!important;
+	}  
+  .page-id-8 .select2-container--default .select2-search--dropdown .select2-search__field, .woocommerce-checkout .select2-dropdown {
+    width: 300px!important;
+	}  
+  .page-id-8 .select2-results {
+  	width: 300px!important;
+	}  
+  .woocommerce-orders-table__cell-order-actions {
+  	height: 52px;!important;
+	}  
+  .woocommerce ul.products li.product .woocommerce-loop-product__title, .woocommerce ul.products li.product h3 {
+    font-size: 12px;
+	}
+  .woocommerce ul.products li.product .price .from {
+    font-size: 10px;
+    }
+  .nv-content-wrap .woocommerce-MyAccount-navigation>ul {
+    list-style-type: none;
+    padding: 0 0 20px 0;
+    display: inline-block;
+    flex-direction: column;
+    text-align: center;
+	}
+  .nv-content-wrap .woocommerce-MyAccount-navigation li {
+    margin: 0;
+    padding: 5px 10px;
+    display: inline;
+	}
+  
+  .woocommerce table.shop_table_responsive tr, .woocommerce-page table.shop_table_responsive tr {
+    display: block;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+    transition: 0.3s;
+    margin-top: 0;
+    border-radius: 10px;
+	}
+  .woocommerce table.shop_table {
+    border: 0px solid rgba(0,0,0,.1)!important; 
+    margin: 0 -1px 24px 0;
+    text-align: left;
+    width: 100%;
+    border-collapse: separate;
+    border-radius: 5px;
+	}
+  
+  /*Fix buttons for make an offer button in https://vivecul.com.co/producto/oferta-por-alquiler/*/
+  .postid-60190 .woocommerce-product-gallery {
+	display:none!important;
+    }
+  .postid-60190 .price {
+	display:none!important;
+    }
+  .offers-for-woocommerce-make-offer-button-single-product {
+	top: 0!important;
+    height: 35px!important;
+   }  
+  
+  	/* fix heigt in cross sell bump offer model on checkut*/
+  .mwb_bump_popup_content {
+    	height: 90%;
+	}
+}
+
+.nx-branding {
+  display:none!important;
+}
+
+.hustle-layout{
+	z-index:3000;
+  }
+
+/*.single_add_to_cart_button {
+  display:none!important;
+}*/
+
+.tracking {
+	background: #ffffff;
+}
+
+.tracking-number {
+  	font-weight: 400!important;
+}
+
+p.order-again {
+	display: none !important;
+}
+
+.mp-redirect-frame {
+	display: none !important;
+}
+.payment_method_woo-mercado-pago-basic  div.payment_box {
+	display: none !important;
+}
+
+.page-id-5024 label {
+	display: block!important;
+}
+
+.woocommerce-button .cancel {
+	display: none !important;
+}
+.page-id-5024  .login-remember {
+	/*display: none !important;*/
+}
+#billing_is_app_field {
+	display: none !important;
+}
+.xoo-wsc-basket {
+    bottom: 90px;
+    position: fixed;
+    margin-right: 6px;
+}
+
+#miniorange_otp_token_submit {
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+}
+
+.checkout .modal-content {
+   width: 80%;
+}
+
+.processing .blockOverlay { 
+  background-image:url('https://cdn.vivecul.com.co/wp-content/uploads/2020/05/18162344/Spinner-1s-200px.gif') !important; 
+  background-position: center 30% !important; 
+  background-repeat: no-repeat !important; 
+}
+
+.remove_item a {
+   display:none!important;
+}
+
+.um_label_top {
+    display: block;
+    font-weight: normal!important;
+}
+
+/*Remove Cancel button from order list*/
+.woocommerce a.button.cancel{
+    display: none!important;
+}
+
+/* Remove PayValida img*/
+ul.payment_methods li img{
+    display: none!important;
+}
+/*fix pay button on no cumplido checkout
+.page-id-8 button {
+	float: right;
+    display: block !important;
+    height: 50px!important;
+    width: 300px!important;
+    font-size: 15px!important;
+}*/
