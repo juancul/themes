@@ -242,7 +242,7 @@ function eg_remove_my_subscriptions_button( $actions, $subscription ) {
       case 'change_payment_method': // Hide "Change Payment Method" button?
       case 'change_address':    // Hide "Change Address" button?
       case 'switch':      // Hide "Switch Subscription" button?
-      case 'resubscribe':   // Hide "Resubscribe" button from an expired or cancelled subscription?
+//      case 'resubscribe':   // Hide "Resubscribe" button from an expired or cancelled subscription?
 //      case 'pay':     // Hide "Pay" button on subscriptions that are "on-hold" as they require payment?
       case 'reactivate':    // Hide "Reactive" button on subscriptions that are "on-hold"?
       case 'cancel':      // Hide "Cancel" button on subscriptions that are "active" or "on-hold"?
@@ -331,7 +331,9 @@ function custom_my_orders($args ) {
     return $args;
 }
 
-/* Check for pending payments */
+/* 
+* Check for pending payments and block screen 
+*/
 
 add_action('wp_footer', 'check_pending_orders');
  
@@ -348,7 +350,7 @@ function check_pending_orders( $posted ) {
     if ( is_user_logged_in() ) { 
         $user = $current_user;
 
-        if ( ! empty( $user ) ) {
+        if ( ! empty( $user ) && $current_user->user_email != "juan+a@vivecul.com") {
             $customer_orders = get_posts( array(
                     'numberposts' => -1,
                     'meta_key'    => '_customer_user',
@@ -378,7 +380,7 @@ function check_pending_orders( $posted ) {
 }
 
 
-/* Remove Cancel button for users*/
+/* Remove Cancel Order button for users*/
 add_filter('woocommerce_my_account_my_orders_actions', 'remove_my_cancel_button', 10, 2);
 function remove_my_cancel_button( $actions, $order ){
     
