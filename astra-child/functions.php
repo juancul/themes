@@ -1,2 +1,2 @@
 <?php
-//* Code goes heres
+//* Code goes here
