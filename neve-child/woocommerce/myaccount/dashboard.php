@@ -33,7 +33,7 @@ $allowed_html = array(
         get_currentuserinfo();
         $user_email = (string) $current_user->user_email;
         //initialize OneSignal
-        echo "<script>window.addEventListener('load', function() {
+        /*echo "<script>window.addEventListener('load', function() {
         window._oneSignalInitOptions.promptOptions = {
               slidedown: {
                   enabled: true,
@@ -47,9 +47,9 @@ $allowed_html = array(
 
 
           window.OneSignal = window.OneSignal || [];
-          /* Why use .push? See: http://stackoverflow.com/a/38466780/555547 */
+          // Why use .push? See: http://stackoverflow.com/a/38466780/555547 
           window.OneSignal.push(function() {
-            /* Never call init() more than once. An error will occur. */
+           // Never call init() more than once. An error will occur. 
             window.OneSignal.init(window._oneSignalInitOptions);
           });
           })
@@ -60,7 +60,7 @@ $allowed_html = array(
                 OneSignal.setExternalUserId(myCustomUniqueUserId);
           });
 
-          </script>";
+          </script>";*/
 
         echo "<h3 id='cul-verify-id'>Verifica tu identidad</h3>";
         //echo "<p>Es obligatorio que sigas el proceso de verificación para poder despachar tu pedido:</p>";
