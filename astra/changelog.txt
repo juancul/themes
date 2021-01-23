@@ -1,3 +1,8 @@
+v3.0.1
+- Fix: Astra assets cache regeneration issue when Astra Pro is updated to v3.0.0 prior to theme. ( https://wpastra.com/docs/clear-astra-cache/ )
+- Fix: UI Tab switching in color options for RTL websites.
+- Fix: Builder - Duplicate listing of social icons in customizer.
+
 v3.0.0
 - New: Account element added for Header Builder. ( https://wpastra.com/astra-3-0/ )
 - Improvement: Removed old CSS that is already supported by browsers.
