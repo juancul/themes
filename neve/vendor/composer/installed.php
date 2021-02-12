@@ -1,24 +1,24 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => 'v2.10.0',
-    'version' => '2.10.0.0',
+    'pretty_version' => 'dev-master',
+    'version' => 'dev-master',
     'aliases' => 
     array (
     ),
-    'reference' => '01efc2cab0ce49af476521a1690855a830c57aa9',
+    'reference' => 'a18ba0f0a40c34aa289f253297ff69415ace6701',
     'name' => 'codeinwp/neve',
   ),
   'versions' => 
   array (
     'codeinwp/neve' => 
     array (
-      'pretty_version' => 'v2.10.0',
-      'version' => '2.10.0.0',
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
       'aliases' => 
       array (
       ),
-      'reference' => '01efc2cab0ce49af476521a1690855a830c57aa9',
+      'reference' => 'a18ba0f0a40c34aa289f253297ff69415ace6701',
     ),
     'codeinwp/themeisle-sdk' => 
     array (

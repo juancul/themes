@@ -1,3 +1,8 @@
+v3.0.2
+- Fix: Dropdown link target option not working for menus inside Off-Canvas, when Off-Canvas type is Flyout or Full-Screen.
+- Fix: Responsive option missing for typography.
+- Fix: Submenu divider option adding heavy border around menu items on responsive devices.
+
 v3.0.1
 - Fix: Astra assets cache regeneration issue when Astra Pro is updated to v3.0.0 prior to theme. ( https://wpastra.com/docs/clear-astra-cache/ )
 - Fix: UI Tab switching in color options for RTL websites.

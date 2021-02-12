@@ -193,41 +193,6 @@ var astraTriggerEvent = function astraTriggerEvent( el, typeArg ) {
 
 		popupWrap.classList.add( 'active', 'show' );
 	}
-	/**
-	 * Opens the Sub Menu when button is clicked.
-	 */
-	function submenuButtonClick () {
-
-		var parent_li = this.parentNode;
-
-		var parent_li_sibling = parent_li.parentNode.querySelectorAll('.menu-item-has-children');
-		for ( var j = 0; j < parent_li_sibling.length; j++ ) {
-
-			if ( parent_li_sibling[j] != parent_li ) {
-
-				parent_li_sibling[j].classList.remove( 'ast-submenu-expanded' );
-
-				var all_sub_menu = parent_li_sibling[j].querySelectorAll('.sub-menu');
-
-				for ( var k = 0; k < all_sub_menu.length; k++ ) {
-					all_sub_menu[k].style.display = 'none';
-				};
-			}
-		};
-
-		if ( parent_li.classList.contains('menu-item-has-children') ) {
-
-			parent_li.classList.toggle( 'ast-submenu-expanded' );
-
-			if ( parent_li.classList.contains('ast-submenu-expanded') ) {
-
-				parent_li.querySelector('.sub-menu').style.display = 'block';
-			} else {
-
-				parent_li.querySelector('.sub-menu').style.display = 'none';
-			}
-		}
-	}
 
 	/**
 	 * Closes the Trigger when Popup is Closed.
@@ -299,11 +264,6 @@ var astraTriggerEvent = function astraTriggerEvent( el, typeArg ) {
 				// Open the Popup when click on trigger
 				popupTrigger[item].addEventListener("click", popupTriggerClick, false);
 
-			}
-			for ( var item = 0;  item < submenuButtons.length; item++ ) {
-
-				// Open the Popup when click on trigger
-				submenuButtons[item].addEventListener("click", submenuButtonClick, false);
 			}
 
 			//Close Popup on CLose Button Click.
@@ -531,9 +491,13 @@ var astraTriggerEvent = function astraTriggerEvent( el, typeArg ) {
 	};
 
 	AstraToggleSetup = function () {
-		var __main_header_all = document.querySelectorAll('#ast-mobile-header');
-
-		menu_toggle_all 	 = document.querySelectorAll( '#ast-mobile-header .main-header-menu-toggle' );
+		if ( 'off-canvas' === mobileHeaderType || 'full-width' === mobileHeaderType ) {
+			var __main_header_all = document.querySelectorAll( '#ast-mobile-popup' ),
+				menu_toggle_all   = document.querySelectorAll( '#ast-mobile-header .main-header-menu-toggle' );
+		} else {
+			var __main_header_all = document.querySelectorAll( '#ast-mobile-header' ),
+				menu_toggle_all   = document.querySelectorAll( '#ast-mobile-header .main-header-menu-toggle' );
+		}
 
 		if (menu_toggle_all.length > 0) {
 
@@ -549,7 +513,7 @@ var astraTriggerEvent = function astraTriggerEvent( el, typeArg ) {
 				if ('undefined' !== typeof __main_header_all[i]) {
 
 					if (document.querySelector('header.site-header').classList.contains('ast-builder-menu-toggle-link')) {
-						var astra_menu_toggle = __main_header_all[i].querySelectorAll('.ast-header-break-point .ast-builder-menu .menu-item-has-children > .menu-link, .ast-header-break-point .ast-builder-menu .ast-menu-toggle');
+						var astra_menu_toggle = __main_header_all[i].querySelectorAll('ul.main-header-menu .menu-item-has-children > .menu-link, ul.main-header-menu .ast-menu-toggle');
 					} else {
 						var astra_menu_toggle = __main_header_all[i].querySelectorAll('ul.main-header-menu .ast-menu-toggle');
 					}

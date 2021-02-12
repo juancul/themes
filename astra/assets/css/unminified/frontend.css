@@ -1744,6 +1744,7 @@ body {
   padding: 0 20px;
   display: inline-block;
   width: 100%;
+  border: 0;
   border-bottom-width: 1px;
   border-style: solid;
   border-color: #eaeaea;
@@ -3701,10 +3702,6 @@ body.admin-bar.ast-primary-sticky-header-active .ast-mobile-popup-drawer .ast-mo
 .ast-header-break-point .main-navigation {
   display: block;
   width: 100%;
-}
-
-.ast-header-break-point .main-navigation ul > .menu-item:first-child {
-  border-top: 0;
 }
 
 .ast-header-break-point .main-navigation ul ul {
