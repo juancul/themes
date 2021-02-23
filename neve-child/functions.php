@@ -363,6 +363,8 @@ function check_pending_orders( $posted ) {
                 $wc_order = wc_get_order($customer_order);
                 if($wc_order->created_via === 'subscription' && $wc_order->status === 'pending') $count++;
             }
+                if($wc_order->created_via === 'subscription' && $wc_order->status === 'failed') $count++;
+            }
 
             if ( $count > 0 ) {
                         $link = wc_get_account_endpoint_url( 'orders' );
