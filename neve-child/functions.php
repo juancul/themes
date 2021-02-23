@@ -362,7 +362,6 @@ function check_pending_orders( $posted ) {
             foreach ( $customer_orders as $customer_order ) {
                 $wc_order = wc_get_order($customer_order);
                 if($wc_order->created_via === 'subscription' && $wc_order->status === 'pending') $count++;
-            }
                 if($wc_order->created_via === 'subscription' && $wc_order->status === 'failed') $count++;
             }
 
