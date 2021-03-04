@@ -147,7 +147,7 @@ function custom_orders_list_column_content( $column, $post_id ) {
                     $active_sub_quantity += 1;
                     //$active_amount += $subscription['total'];
                 }
-                if ($subscription['status'] == 'on-hold') {
+                if ($subscription['status'] == 'on-hold' | $subscription['status'] == 'late-payment-60' | $subscription['status'] == 'late-payment-90' | $subscription['status'] == 'late-payment-120' | $subscription['status'] == 'late-payment-150' | $subscription['status'] == 'late-payment-180' | $subscription['status'] == 'bad-payment') {
                     $onhold_sub_quantity += 1;
                 }
             }
