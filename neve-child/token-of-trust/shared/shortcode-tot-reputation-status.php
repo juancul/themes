@@ -61,13 +61,13 @@ function tot_reputation_status_shortcode($attrs, $content = null)
     // Must either be an existing user or part of a TOT checkout.
     if ((empty($appTransactionId) || is_wp_error($appTransactionId)) && (empty($appUserid) || is_wp_error($appUserid))) {
         tot_log_as_html_comment('Neither user nor order found.', '');
-        return apply_filters('tot_verification_gates_request_signin_block', "<p class='woocommerce-info'>Inicia sesión para verificar tu identidad</p>");
+        return apply_filters('tot_verification_gates_request_signin_block', "<p>Debes iniciar sesión antes de continuar</p>");
     }
 
     $reasons = is_wp_error($reputation) ? $reputation : $reputation->reasons;
 
     if (is_wp_error($reasons)) {
-        return apply_filters('tot_verification_gates_error_block', "<p class='woocommerce-error'>Hubo un problema verificando tu estado de verificación de identidad. Por favor revisa en unos momentos</p>");
+        return apply_filters('tot_verification_gates_error_block', "<p>Hay un problema revisando tu identidad, ponte en contacto con nosotros.</p>");
     } else {
         $reasons = new Reasons($reasons);
     }
@@ -79,18 +79,17 @@ function tot_reputation_status_shortcode($attrs, $content = null)
 
     if ($approved) {
         tot_log_as_html_comment('tot_verification_gates_approved_block', $reasons);
-        return apply_filters('tot_verification_gates_approved_block', "<p class='woocommerce-message'>¡Gracias! Tu identidad ha sido verificada</p>");
+        return apply_filters('tot_verification_gates_approved_block', "<p>Gracias - Tu identidad ha sido verificada</p>");
     }
 
     if ($pendingReview) {
         tot_log_as_html_comment('tot_verification_gates_pending_block', $reasons);
-        return apply_filters('tot_verification_gates_pending_block', "<p class='woocommerce-info'>Tu verificación de identidad está en proceso, debes estar pendiente de tu email.</p><p class='woocommerce-info'>Puedes revisar tu proceso acá: <a href='#tot_get_verified'>".do_shortcode( '[tot-wp-embed tot-widget="accountConnector" verification-model="person"][/tot-wp-embed]
-' )." </a></p>");
+        return apply_filters('tot_verification_gates_pending_block', "<p>Gracias, tu identidad está siendo verificada, debes estar pendiente de tu email. La revisión se hará dentro de los siguientes 2 días hábiles.</p>");
     }
 
     if ($rejected) {
         tot_log_as_html_comment('tot_verification_gates_rejected_block', $reasons);
-        return apply_filters('tot_verification_gates_rejected_block', "<p class='woocommerce-error'>Tu identidad <strong>NO FUE APROBADA </strong> por favor ponte en contacto acá: <a href='vivecul.com.co/ayuda'>vivecul.com.co/ayuda</a></p>");
+        return apply_filters('tot_verification_gates_rejected_block', "<p>Tu verificación de identidad fue rechazada. Ponte en contacto con nosotros para tu devolución.</p>");
     }
 
     $not_verified = !($pendingReview || $rejected || $approved);
@@ -100,6 +99,7 @@ function tot_reputation_status_shortcode($attrs, $content = null)
 
         $verify_person_data = array();
         $verify = null;
+
         if (!empty($appUserid)) {
             $verify_person_data['appUserid'] = $appUserid;
             $appData = tot_get_user_app_data($wpUserid);
@@ -110,6 +110,13 @@ function tot_reputation_status_shortcode($attrs, $content = null)
             $verify = new \TOT\API_Person($verify_person_data);
             $verify->set_details_from_order($order);
         }
+
+        // Append the reservation if we have one.
+        $totReservationToken = tot_get_time_based_cookie('totReservationToken');
+        if (!empty($totReservationToken)) {
+            $verify->set_totReservationToken($totReservationToken);
+        }
+
         $error_callback = array('\TOT\API_Person', 'handle_verify_person_api_error');
         $verify->verify_result = $verify->send($error_callback);
 
@@ -117,7 +124,7 @@ function tot_reputation_status_shortcode($attrs, $content = null)
         $autoLaunchModal = '' !== $autolaunchwhennotverified && $autolaunchwhennotverified !== 'false';
         $settingsData = '';
         if ($autoLaunchModal) {
-            $settingsData .= ' data-tot-auto-open-modal=\'true\' ';
+            $settingsData .= ' data-tot-auto-open-modal="true" ';
         }
 
         // Add a div with id = tot-auto-launch-modal to the page to automatically launch the modal.
