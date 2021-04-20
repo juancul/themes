@@ -1,9 +1,11 @@
 === Storefront ===
 Contributors: automattic, tiagonoronha, jameskoster
-Requires at least: 5.2.7
-Tested up to: 5.5
-Stable tag: 2.7.0
-Version: 2.7.0
+Requires at least: 5.3.4
+Tested up to: 5.6.0
+Stable tag: 3.5.1
+Version: 3.5.1
+WC requires at least: 4.2
+WC tested up to: 5.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: e-commerce, two-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, featured-images, full-width-template, threaded-comments, accessibility-ready, rtl-language-support, footer-widgets, sticky-post, theme-options, editor-style
@@ -48,6 +50,62 @@ To the best of our knowledge, Google doesn’t track nor share end user data.
 Privacy Policy for the Google Fonts API: https://developers.google.com/fonts/faq#what_does_using_the_google_fonts_api_mean_for_the_privacy_of_my_users
 
 == Changelog ==
+
+= 3.5.1 - 2021-03-17 =
+
+- Fix - Add missing hook to documentation [#1628](https://github.com/woocommerce/storefront/pull/1628)
+- Fix - Adjust size of download button for files with long names [#1624](https://github.com/woocommerce/storefront/pull/1624)
+- Fix - Close submenu for menu item on outside click [#1627](https://github.com/woocommerce/storefront/pull/1627)
+- Fix - Hide handheld-footer and notice only on smaller devices [#1615](https://github.com/woocommerce/storefront/pull/1615)
+
+= 3.5.0 - 2021-02-02 =
+- Fix - Remove maximum-scale from viewport meta tag [#1600](https://github.com/woocommerce/storefront/pull/1600)
+
+= 3.4.0 - 2021-01-27 =
+- Fix - Missing icons in WC Blocks and some other parts of the UI. [#1588](https://github.com/woocommerce/storefront/pull/1588)
+- Fix - Use proper escape function in comments template. [#1587](https://github.com/woocommerce/storefront/pull/1587)
+
+= 3.3.0 - 2021-01-14 =
+- Fix – Fatal error in old versions of WooCommerce. [#1583](https://github.com/woocommerce/storefront/pull/1583)
+- Fix - Updated several escape functions. [#1581](https://github.com/woocommerce/storefront/pull/1581)
+
+= 3.2.0 - 2021-01-12 =
+* Fix – Replaced WooCommerce and Star icon usage with FontAwesome. [#1574](https://github.com/woocommerce/storefront/pull/1574)
+* Fix - Use proper escape function for `datetime` attribute in comments template. [#1576](https://github.com/woocommerce/storefront/pull/1576)
+
+= 3.1.0 - 2021-01-05 =
+* Fix – Prevent a fatal error on activation if WooCommerce Admin is intentionally disabled.
+* Fix – Removed legacy code targeting unsupported versions of WooCommerce. Storefront currently supports 4.2+.
+* Dev - Update stylelint to use stylelint-config-wordpress\scss config and refactor SCSS files to follow WordPress CSS coding standards.
+* Dev - Updated engines in package.json.
+* Dev - Fixed PHP linting warnings.
+
+= 3.0.0 - 2020-12-15 = 
+* Enhancement - Add missing link text on cart button in handheld footer bar [#1205](https://github.com/woocommerce/storefront/issues/1205)
+* Enhancement - Move Storefront admin notice content to the Storefront Appearance page.[#1544](https://github.com/woocommerce/storefront/pull/1544)
+* Fix - Implode parameters order compatibility for PHP8 [#1553](https://github.com/woocommerce/storefront/pull/1553)
+* Dev - Update various dependencies, including major updates:
+  - `@wordpress/env` to v2 [#1459](https://github.com/woocommerce/storefront/pull/1459)
+  - `autoprefixer` to v10.0.4 [#1548](https://github.com/woocommerce/storefront/pull/1548)
+  - `puppeteer` to v5 [#1410](https://github.com/woocommerce/storefront/pull/1410)
+  - `grunt-contrib-uglify` to v5 [#1426](https://github.com/woocommerce/storefront/pull/1426)
+  - `bourbon` to v7 [#1388](https://github.com/woocommerce/storefront/pull/1388)
+
+= 2.9.0 - 2020-11-10 =
+* Enhancement – Added styles to the Filter Products by Price block, so the accent color is used in the slider. [#1508](https://github.com/woocommerce/storefront/pull/1508)
+* Performance – Added CSS minification. [#1503](https://github.com/woocommerce/storefront/pull/1503)
+* Fix - Cover block text color attributes not being applied. [#1513](https://github.com/woocommerce/storefront/pull/1513)
+* Fix - Inconsistent font sizes of category and product titles in shop page. [#1501](https://github.com/woocommerce/storefront/pull/1501)
+* Dev - Update various dependencies, including major updates:
+  - `autoprefixer` v10 and `postcss` v8 [#1502](https://github.com/woocommerce/storefront/pull/1502)
+  - `grunt-contrib-jshint` v3 [#1507](https://github.com/woocommerce/storefront/pull/1507)
+  - `node-sass` v5 [#1523](https://github.com/woocommerce/storefront/pull/1523)
+
+= 2.8.0 - 2020-10-13 =
+- Dev: Reinstate PHPcs linting #1463
+- Dev: Add `wp-env` npm script alias #1489
+- Dev: Tweak npm config & scripts for release tooling changes #1462 
+- Dev: Various dependency updates 
 
 = 2.7.0 - 2020-09-02 =
 * Fix - Respect user-selected Color and Font size values for All Products' Product Title Block. [#1424](https://github.com/woocommerce/storefront/pull/1424)

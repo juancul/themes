@@ -25,33 +25,42 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => 'dev-master',
-    'version' => 'dev-master',
+    'pretty_version' => 'v2.11.1',
+    'version' => '2.11.1.0',
     'aliases' => 
     array (
     ),
-    'reference' => 'a18ba0f0a40c34aa289f253297ff69415ace6701',
+    'reference' => '4186d70efed6b96f9f7476d8451fba6a1c28eb71',
     'name' => 'codeinwp/neve',
   ),
   'versions' => 
   array (
     'codeinwp/neve' => 
     array (
-      'pretty_version' => 'dev-master',
-      'version' => 'dev-master',
+      'pretty_version' => 'v2.11.1',
+      'version' => '2.11.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'a18ba0f0a40c34aa289f253297ff69415ace6701',
+      'reference' => '4186d70efed6b96f9f7476d8451fba6a1c28eb71',
     ),
     'codeinwp/themeisle-sdk' => 
     array (
-      'pretty_version' => '3.2.16',
-      'version' => '3.2.16.0',
+      'pretty_version' => '3.2.19',
+      'version' => '3.2.19.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'b116dffbe39ea9e37169fdd683bab54c545fe560',
+      'reference' => 'abb31e2382fd8c40bcc18d7c9f3501d14bf48e87',
+    ),
+    'wptt/webfont-loader' => 
+    array (
+      'pretty_version' => 'v1.1.1',
+      'version' => '1.1.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '7243420fec7f202a9355485b8533bd99a7654941',
     ),
   ),
 );
@@ -276,7 +285,6 @@ self::$canGetVendors = method_exists('Composer\Autoload\ClassLoader', 'getRegist
 $installed = array();
 
 if (self::$canGetVendors) {
-
 foreach (ClassLoader::getRegisteredLoaders() as $vendorDir => $loader) {
 if (isset(self::$installedByVendor[$vendorDir])) {
 $installed[] = self::$installedByVendor[$vendorDir];

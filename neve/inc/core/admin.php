@@ -68,6 +68,8 @@ class Admin {
 		add_action( 'after_switch_theme', [ $this, 'get_previous_theme' ] );
 
 		add_filter( 'all_plugins', array( $this, 'change_plugin_names' ) );
+
+		add_action( 'after_switch_theme', array( $this, 'migrate_options' ) );
 	}
 
 	/**
@@ -257,7 +259,7 @@ class Admin {
 		$notice_sites_list = sprintf(
 			'<div><h3><span class="dashicons dashicons-images-alt2"></span> %1$s</h3><p>%2$s</p></div><div> <p>%3$s</p><p>%4$s</p> </div>',
 			__( 'Sites Library', 'neve' ),
-			// translators: %s - theme name
+			// translators: %s - Theme name
 				sprintf( esc_html__( '%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'neve' ), $name ),
 			$ob_btn,
 			$options_page_btn
@@ -265,7 +267,7 @@ class Admin {
 		$notice_documentation = sprintf(
 			'<div><h3><span class="dashicons dashicons-format-aside"></span> %1$s</h3><p>%2$s</p><a href="%3$s">%4$s</a></div><div> <p>%5$s</p></div>',
 			__( 'Documentation', 'neve' ),
-			// translators: %s - theme name
+			// translators: %s - Theme name
 				sprintf( esc_html__( 'Need more details? Please check our full documentation for detailed information on how to use %s.', 'neve' ), $name ),
 			'https://docs.themeisle.com/article/946-neve-doc',
 			esc_html__( 'Read full documentation', 'neve' ),
@@ -460,5 +462,25 @@ class Admin {
 			$plugins['otter-blocks/otter-blocks.php']['Name'] = 'Gutenberg Blocks and Template Library by Neve theme';
 		}
 		return $plugins;
+	}
+
+	/**
+	 * Import neve options when switching to a child theme.
+	 */
+	public function migrate_options() {
+		$old_theme = strtolower( get_option( 'theme_switched' ) );
+		if ( 'neve' !== $old_theme ) {
+			return;
+		}
+
+		/* import Neve options */
+		$neve_mods = get_option( 'theme_mods_neve' );
+
+		if ( ! empty( $neve_mods ) ) {
+
+			foreach ( $neve_mods as $neve_mod_k => $neve_mod_v ) {
+				set_theme_mod( $neve_mod_k, $neve_mod_v );
+			}
+		}
 	}
 }
