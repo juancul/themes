@@ -579,3 +579,10 @@ function graphqlQuery(string $endpoint, string $query, array $variables = [], ?s
 
     return json_decode($data, true);
 }
+
+//Add select department shortcode
+add_action( 'woocommerce_single_product_summary', 'add_select_country_state', 15 );
+function add_select_country_state() {
+    echo do_shortcode('[vcwccr_country_selector]');
+    // End of content
+}
