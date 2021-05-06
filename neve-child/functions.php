@@ -584,6 +584,11 @@ function graphqlQuery(string $endpoint, string $query, array $variables = [], ?s
 add_action( 'woocommerce_before_single_product', 'add_select_country_state', 15 );
 //add_action( 'woocommerce_before_main_content', 'add_select_country_state', 15 );
 function add_select_country_state() {
-    echo '<div class="woocommerce-info">Selecciona tu departamento: '.do_shortcode('[vcwccr_country_selector]').'</div>';
+    $prod_id = get_the_ID();
+    if( has_term( 'rayco', 'product_cat' ), $prod_id ) {
+        
+        echo '<div class="woocommerce-info">Selecciona tu departamento: '.do_shortcode('[vcwccr_country_selector]').'</div>';
+    }
+    
     
 }
