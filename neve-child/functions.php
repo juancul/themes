@@ -581,8 +581,8 @@ function graphqlQuery(string $endpoint, string $query, array $variables = [], ?s
 }
 
 //Add select department shortcode
-add_action( 'woocommerce_single_product_summary', 'add_select_country_state', 15 );
+add_action( 'woocommerce_before_single_product', 'add_select_country_state', 15 );
 function add_select_country_state() {
-    echo do_shortcode('[vcwccr_country_selector]');
+    echo '<div class="woocommerce-info">'.do_shortcode('[vcwccr_country_selector]')'</div>';
     // End of content
 }
