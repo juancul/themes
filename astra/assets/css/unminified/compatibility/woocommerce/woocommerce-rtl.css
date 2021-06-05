@@ -509,10 +509,6 @@ p.demo_store a,
   display: inline-block;
 }
 
-.ast-header-break-point.ast-hfb-header.ast-woocommerce-cart-menu .ast-site-header-cart {
-  padding: 0;
-}
-
 /**
  * Main WooCommerce styles
  */
@@ -1297,7 +1293,7 @@ p.demo_store a,
   background-color: #77a464;
   color: white;
   -webkit-font-smoothing: antialiased;
-  z-index: 99;
+  z-index: 9;
 }
 
 .woocommerce .products ul,

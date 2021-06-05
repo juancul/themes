@@ -228,7 +228,7 @@ return array(
 	array(
 		'Almendra SC' => array(
 			'variants' => array( 'regular' ), 
-			'category' => 'serif',
+			'category' => 'serif', 
 		),
 	),
 	array(
@@ -336,12 +336,6 @@ return array(
 	array(
 		'Anton' => array(
 			'variants' => array( 'regular' ), 
-			'category' => 'sans-serif', 
-		),
-	),
-	array(
-		'Antonio' => array(
-			'variants' => array( '100', '200', '300', 'regular', '500', '600', '700' ), 
 			'category' => 'sans-serif', 
 		),
 	),
@@ -1176,7 +1170,7 @@ return array(
 	array(
 		'Caudex' => array(
 			'variants' => array( 'regular', 'italic', '700', '700italic' ), 
-			'category' => 'serif', 
+			'category' => 'serif',
 		),
 	),
 	array(
@@ -2926,12 +2920,6 @@ return array(
 		),
 	),
 	array(
-		'Karantina' => array(
-			'variants' => array( '300', 'regular', '700' ), 
-			'category' => 'display', 
-		),
-	),
-	array(
 		'Karla' => array(
 			'variants' => array( '200', '300', 'regular', '500', '600', '700', '800', '200italic', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic' ), 
 			'category' => 'sans-serif', 
@@ -4332,12 +4320,6 @@ return array(
 	array(
 		'Oregano' => array(
 			'variants' => array( 'regular', 'italic' ), 
-			'category' => 'display', 
-		),
-	),
-	array(
-		'Orelega One' => array(
-			'variants' => array( 'regular' ), 
 			'category' => 'display', 
 		),
 	),
@@ -6295,12 +6277,6 @@ return array(
 		'ZCOOL XiaoWei' => array(
 			'variants' => array( 'regular' ), 
 			'category' => 'serif', 
-		),
-	),
-	array(
-		'Zen Dots' => array(
-			'variants' => array( 'regular' ), 
-			'category' => 'display', 
 		),
 	),
 	array(

@@ -371,12 +371,6 @@ function astra_builder_social_css( builder_type = 'header', social_count ) {
 						dynamicStyle += 'margin-left: ' + space + 'px;';
 						dynamicStyle += 'margin-right: ' + space + 'px;';
 						dynamicStyle += '} ';
-						dynamicStyle += selector + ' .' + builder_type + '-social-inner-wrap .ast-builder-social-element:first-child {';
-						dynamicStyle += 'margin-left: 0;';
-						dynamicStyle += '} ';
-						dynamicStyle += selector + ' .' + builder_type + '-social-inner-wrap .ast-builder-social-element:last-child {';
-						dynamicStyle += 'margin-right: 0;';
-						dynamicStyle += '} ';
 					}
 
 					if ( spacing.tablet != '' ) {
@@ -385,12 +379,6 @@ function astra_builder_social_css( builder_type = 'header', social_count ) {
 						dynamicStyle += selector + ' .' + builder_type + '-social-inner-wrap .ast-builder-social-element {';
 						dynamicStyle += 'margin-left: ' + space + 'px;';
 						dynamicStyle += 'margin-right: ' + space + 'px;';
-						dynamicStyle += '} ';
-						dynamicStyle += selector + ' .' + builder_type + '-social-inner-wrap .ast-builder-social-element:first-child {';
-						dynamicStyle += 'margin-left: 0;';
-						dynamicStyle += '} ';
-						dynamicStyle += selector + ' .' + builder_type + '-social-inner-wrap .ast-builder-social-element:last-child {';
-						dynamicStyle += 'margin-right: 0;';
 						dynamicStyle += '} ';
 						dynamicStyle += '} ';
 					}
@@ -402,16 +390,10 @@ function astra_builder_social_css( builder_type = 'header', social_count ) {
 						dynamicStyle += 'margin-left: ' + space + 'px;';
 						dynamicStyle += 'margin-right: ' + space + 'px;';
 						dynamicStyle += '} ';
-						dynamicStyle += selector + ' .' + builder_type + '-social-inner-wrap .ast-builder-social-element:first-child {';
-						dynamicStyle += 'margin-left: 0;';
-						dynamicStyle += '} ';
-						dynamicStyle += selector + ' .' + builder_type + '-social-inner-wrap .ast-builder-social-element:last-child {';
-						dynamicStyle += 'margin-right: 0;';
-						dynamicStyle += '} ';
 						dynamicStyle += '} ';
 					}
 
-					astra_add_dynamic_css( builder_type + '-social-icons-icon-space', dynamicStyle );
+					astra_add_dynamic_css( builder_type + '-social-icons-icon-space-toggle-button', dynamicStyle );
 				} );
 			} );
 
@@ -619,9 +601,9 @@ function astra_builder_widget_css( builder_type = 'header' ) {
 
 							dynamicStyle +=  '@media (max-width: ' + tablet_break_point + 'px) {';
 							if( AstraBuilderWidgetData.is_flex_based_css ){
-								dynamicStyle += '.footer-widget-area[data-section="sidebar-widgets-footer-widget-' + index + '"].footer-widget-area-inner {';
+								dynamicStyle += '.footer-widget-area[data-section="sidebar-widgets-footer-widget-' + index + '"].footer-widget-area-inner {'; 
 							}else{
-								dynamicStyle += '.footer-widget-area[data-section="sidebar-widgets-footer-widget-' + index + '"] .footer-widget-area-inner {';
+								dynamicStyle += '.footer-widget-area[data-section="sidebar-widgets-footer-widget-' + index + '"] .footer-widget-area-inner {'; 
 							}
 							dynamicStyle += 'text-align: ' + alignment['tablet'] + ';';
 							dynamicStyle += '} ';

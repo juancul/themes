@@ -40,10 +40,9 @@ class Upsells extends Base_Customizer {
 			'neve-customizer-controls',
 			'upsellConfig',
 			array(
-				'button_url'    => esc_url( apply_filters( 'neve_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/neve/upgrade/?utm_medium=customizer&utm_source=getpro&utm_campaign=neve' ) ),
-				'button_text'   => esc_html__( 'Get the PRO version!', 'neve' ),
-				'text'          => esc_html__( 'Extend your header with more components and settings, build sticky/transparent headers or display them conditionally.', 'neve' ),
-				'screen_reader' => esc_html__( '(opens in a new tab)', 'neve' ),
+				'button_url'  => esc_url( apply_filters( 'neve_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/neve/upgrade/?utm_medium=customizer&utm_source=getpro&utm_campaign=neve' ) ),
+				'button_text' => esc_html__( 'Get the PRO version!', 'neve' ),
+				'text'        => esc_html__( 'Extend your header with more components and settings, build sticky/transparent headers or display them conditionally.', 'neve' ),
 			)
 		);
 	}
@@ -103,7 +102,6 @@ class Upsells extends Base_Customizer {
 					),
 					'button_url'         => esc_url( apply_filters( 'neve_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/neve/upgrade/?utm_medium=customizer&utm_source=getpro&utm_campaign=neve' ) ),
 					'button_text'        => esc_html__( 'Get the PRO version!', 'neve' ),
-					'screen_reader'      => esc_html__( '(opens in new tab)', 'neve' ),
 				),
 				'Neve\Customizer\Controls\Upsell_Control'
 			)

@@ -803,7 +803,7 @@ if ( ! function_exists( 'storefront_sticky_single_add_to_cart' ) ) {
 			return;
 		}
 
-		if ( ! $product || ! is_product() ) {
+		if ( ! is_product() ) {
 			return;
 		}
 

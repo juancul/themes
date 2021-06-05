@@ -31,11 +31,7 @@ class Font_Manager extends Base_View {
 	 */
 	final public static function add_google_font( $font_family, $font_weight = '400' ) {
 		if ( empty( $font_family ) ) {
-			$body_font = get_theme_mod( 'neve_body_font_family' );
-			if ( empty( $body_font ) ) {
-				return;
-			}
-			$font_family = $body_font;
+			return;
 		}
 		if ( ! in_array( $font_weight, [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ], true ) ) {
 			$font_weight = '400';

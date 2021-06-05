@@ -217,9 +217,8 @@ class Typography extends Base_Customizer {
 					'input_attrs' => [
 						'system' => true,
 						'link'   => [
-							'string'  => __( 'Learn more about fallback fonts', 'neve' ),
-							'url'     => esc_url( 'https://docs.themeisle.com/article/1319-fallback-fonts' ),
-							'new_tab' => true,
+							'string' => __( 'Learn more about fallback fonts', 'neve' ),
+							'url'    => esc_url( 'https://docs.themeisle.com/article/1319-fallback-fonts' ),
 						],
 					],
 				],

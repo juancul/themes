@@ -117,7 +117,6 @@ if ( ! class_exists( 'Astra_Blog_Single_Layout_Configs' ) ) {
 							'value'    => 'single-title-meta',
 						),
 					),
-					'divider'           => array( 'ast_class' => 'ast-bottom-divider' ),
 					'section'           => 'section-blog-single',
 					'priority'          => 5,
 					'title'             => __( 'Meta', 'astra' ),

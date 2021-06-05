@@ -114,6 +114,11 @@ if ( class_exists( 'Astra_Customizer_Config_Base' ) ) {
 						),
 						'context'    => Astra_Builder_Helper::$design_tab,
 						'transport'  => 'postMessage',
+						'partial'    => array(
+							'selector'         => '#ast-hf-menu-' . $index,
+							'render_callback'  => array( Astra_Builder_Header::get_instance(), 'menu_' . $index ),
+							'fallback_refresh' => false,
+						),
 						'responsive' => false,
 						'renderAs'   => 'text',
 					),
@@ -151,6 +156,11 @@ if ( class_exists( 'Astra_Customizer_Config_Base' ) ) {
 							'max'  => 200,
 						),
 						'transport'   => 'postMessage',
+						'partial'     => array(
+							'selector'         => '#ast-hf-menu-' . $index,
+							'render_callback'  => array( Astra_Builder_Header::get_instance(), 'menu_' . $index ),
+							'fallback_refresh' => false,
+						),
 					),
 
 					/**
@@ -172,6 +182,11 @@ if ( class_exists( 'Astra_Customizer_Config_Base' ) ) {
 						),
 						'context'    => Astra_Builder_Helper::$general_tab,
 						'transport'  => 'postMessage',
+						'partial'    => array(
+							'selector'         => '#ast-hf-menu-' . $index,
+							'render_callback'  => array( Astra_Builder_Header::get_instance(), 'menu_' . $index ),
+							'fallback_refresh' => false,
+						),
 						'responsive' => false,
 						'renderAs'   => 'text',
 					),
@@ -306,7 +321,6 @@ if ( class_exists( 'Astra_Customizer_Config_Base' ) ) {
 						'title'       => __( 'Border Radius', 'astra' ),
 						'suffix'      => 'px',
 						'context'     => Astra_Builder_Helper::$design_tab,
-						'transport'   => 'postMessage',
 						'input_attrs' => array(
 							'min'  => 0,
 							'step' => 1,
@@ -325,6 +339,11 @@ if ( class_exists( 'Astra_Customizer_Config_Base' ) ) {
 						'title'     => __( 'Item Divider', 'astra' ),
 						'context'   => Astra_Builder_Helper::$general_tab,
 						'transport' => 'postMessage',
+						'partial'   => array(
+							'selector'         => '#ast-hf-menu-' . $index,
+							'render_callback'  => array( Astra_Builder_Header::get_instance(), 'menu_' . $index ),
+							'fallback_refresh' => false,
+						),
 						'divider'   => array( 'ast_class' => 'ast-bottom-divider' ),
 					),
 

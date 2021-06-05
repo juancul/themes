@@ -92,6 +92,7 @@ class Astra_Customizer_Woo_Cart_Configs extends Astra_Customizer_Config_Base {
 				'control'    => 'ast-selector',
 				'priority'   => 45,
 				'choices'    => array(
+					'none'    => __( 'None', 'astra' ),
 					'outline' => __( 'Outline', 'astra' ),
 					'fill'    => __( 'Fill', 'astra' ),
 				),
