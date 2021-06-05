@@ -122,6 +122,11 @@ if ( ! class_exists( 'Astra_Customizer' ) ) {
 				add_filter( 'customize_dynamic_partial_args', array( $this, 'filter_dynamic_partial_args' ), 10, 2 );
 
 			}
+			
+			// Disable block editor for widgets in the customizer.
+			if ( defined( 'GUTENBERG_VERSION' ) && version_compare( GUTENBERG_VERSION, '10.6.2', '>' ) && is_customize_preview() ) {
+				add_filter( 'gutenberg_use_widgets_block_editor', '__return_false' );
+			}
 
 			add_action( 'customize_controls_enqueue_scripts', array( $this, 'controls_scripts' ) );
 			add_filter( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_customizer_scripts' ), 999 );
@@ -1043,6 +1048,7 @@ if ( ! class_exists( 'Astra_Customizer' ) ) {
 			require ASTRA_THEME_DIR . 'inc/customizer/configurations/layout/class-astra-site-identity-configs.php';
 			require ASTRA_THEME_DIR . 'inc/customizer/configurations/layout/class-astra-blog-layout-configs.php';
 			require ASTRA_THEME_DIR . 'inc/customizer/configurations/layout/class-astra-blog-single-layout-configs.php';
+			require ASTRA_THEME_DIR . 'inc/customizer/configurations/layout/class-astra-related-posts-configs.php';
 			require ASTRA_THEME_DIR . 'inc/customizer/configurations/layout/class-astra-sidebar-layout-configs.php';
 			require ASTRA_THEME_DIR . 'inc/customizer/configurations/layout/class-astra-site-container-layout-configs.php';
 			require ASTRA_THEME_DIR . 'inc/customizer/configurations/colors-background/class-astra-body-colors-configs.php';
@@ -1329,7 +1335,7 @@ if ( ! class_exists( 'Astra_Customizer' ) ) {
 				'page_builder_button_style_css'        => Astra_Dynamic_CSS::page_builder_button_style_css(),
 				'elementor_default_color_font_setting' => Astra_Dynamic_CSS::elementor_default_color_font_setting(),
 				'dynamic_partial_options'              => self::$dynamic_options['partials'],
-				'gb_outline_buttons_patterns_support'  => Astra_Dynamic_CSS::gutenberg_button_patterns_compat(),
+				'gb_outline_buttons_patterns_support'  => Astra_Dynamic_CSS::gutenberg_core_patterns_compat(),
 			);
 
 			wp_localize_script( 'astra-customizer-preview-js', 'astraCustomizer', $localize_array );
