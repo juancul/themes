@@ -117,7 +117,7 @@ function my_get_wp_user_id($theOrder) {
 }
 
 /* Add user information to orders list*/
-add_action( 'manage_shop_order_posts_custom_column' , 'custom_orders_list_column_content', 50, 2 );
+/*add_action( 'manage_shop_order_posts_custom_column' , 'custom_orders_list_column_content', 50, 2 );
 function custom_orders_list_column_content( $column, $post_id ) {
     if ( $column == 'order_number' )
     {
@@ -190,7 +190,7 @@ function custom_orders_list_column_content( $column, $post_id ) {
         }
     
     }
-}
+}*/
 
 /**
  * @snippet       Save "Terms and Conditions" Acceptance Upon Checkout - WooCommerce
