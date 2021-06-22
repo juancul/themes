@@ -18,27 +18,17 @@ use Neve\Core\Styles\Dynamic_Selector;
  * @package Neve\Views\Pluggable
  */
 class Metabox_Settings {
-	const CONTENT_WIDTH          = 'neve_meta_content_width';
-	const ENABLE_CONTENT_WIDTH   = 'neve_meta_enable_content_width';
-	const CONTAINER              = 'neve_meta_container';
-	const SIDEBAR                = 'neve_meta_sidebar';
-	const TITLE_ALIGNMENT        = 'neve_meta_title_alignment';
-	const DISABLE_HEADER         = 'neve_meta_disable_header';
-	const DISABLE_TITLE          = 'neve_meta_disable_title';
-	const DISABLE_FEATURED_IMAGE = 'neve_meta_disable_featured_image';
-	const DISABLE_FOOTER         = 'neve_meta_disable_footer';
-	const ELEMENTS_ORDER         = 'neve_post_elements_order';
-	const SHOW_AVATAR            = 'neve_meta_author_avatar';
+
 	/**
 	 * Context mapping for the post meta.
 	 *
 	 * @var array
 	 */
 	private $context_mapping = array(
-		'header'         => self::DISABLE_HEADER,
-		'title'          => self::DISABLE_TITLE,
-		'featured-image' => self::DISABLE_FEATURED_IMAGE,
-		'footer'         => self::DISABLE_FOOTER,
+		'header'         => 'neve_meta_disable_header',
+		'title'          => 'neve_meta_disable_title',
+		'featured-image' => 'neve_meta_disable_featured_image',
+		'footer'         => 'neve_meta_disable_footer',
 	);
 
 	/**
@@ -54,27 +44,34 @@ class Metabox_Settings {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_content_width' ), 100 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'content_width' ), 999 );
 
-		add_filter(
-			'ti_tpc_template_meta',
-			function () {
-				return [
-					self::SHOW_AVATAR,
-					self::ELEMENTS_ORDER,
-					self::DISABLE_FOOTER,
-					self::DISABLE_FEATURED_IMAGE,
-					self::DISABLE_TITLE,
-					self::DISABLE_HEADER,
-					self::TITLE_ALIGNMENT,
-					self::SIDEBAR,
-					self::CONTAINER,
-					self::ENABLE_CONTENT_WIDTH,
-					self::CONTENT_WIDTH,
-				];
-			}
-		);
+
 		add_filter( 'neve_layout_single_post_elements_order', array( $this, 'filter_post_elements' ) );
 		add_filter( 'neve_post_title_alignment', array( $this, 'filter_title_alignment' ) );
 		add_filter( 'neve_display_author_avatar', array( $this, 'filter_author_avatar_display' ) );
+	}
+
+	/**
+	 * Check if we should account for the meta settings.
+	 *
+	 * @return bool
+	 */
+	private function has_settings() {
+		if (
+			! is_single() &&
+			! is_page() &&
+			! $this->is_blog_static() &&
+			( class_exists( 'WooCommerce', false ) && ! is_shop() )
+		) {
+			return false;
+		}
+
+		$post_id = $this->get_post_id();
+
+		if ( $post_id === false ) {
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
@@ -108,68 +105,63 @@ class Metabox_Settings {
 	}
 
 	/**
-	 * Check if we should account for the meta settings.
+	 * Get content width, if any.
 	 *
-	 * @return bool
+	 * @return int|bool Content width.
 	 */
-	private function has_settings() {
-		if (
-			! is_single() &&
-			! is_page() &&
-			! $this->is_blog_static() &&
-			( class_exists( 'WooCommerce', false ) && ! is_shop() )
-		) {
-			return false;
-		}
-
+	public function get_content_width() {
 		$post_id = $this->get_post_id();
 
 		if ( $post_id === false ) {
 			return false;
 		}
 
-		return true;
+		$content_width_status = get_post_meta( $post_id, 'neve_meta_enable_content_width', true );
+		$content_width_status = empty( $content_width_status ) ? $this->get_content_width_status_default() : $content_width_status;
+		if ( $content_width_status !== 'on' ) {
+			return false;
+		}
+
+		return get_post_meta( $post_id, 'neve_meta_content_width', true );
+
 	}
 
 	/**
-	 * Check if the blog is set to a static page.
+	 * Get continer type for current post.
 	 *
-	 * @return bool
+	 * @return mixed|string
 	 */
-	private function is_blog_static() {
-		return ( get_option( 'show_on_front' ) === 'page' && is_home() );
+	public function get_container_type() {
+
+		$post_id = $this->get_post_id();
+
+		$meta_value = get_post_meta( $post_id, 'neve_meta_container', true );
+
+		if ( empty( $meta_value ) || $meta_value === 'default' ) {
+			return '';
+		}
+		if ( $post_id === false ) {
+			return '';
+		}
+
+		return $meta_value;
 	}
 
 	/**
-	 * Get the post id.
+	 * Return container type for the selected post.
 	 *
-	 * @return bool|string
+	 * @return string
 	 */
-	private function get_post_id() {
-		if ( $this->is_blog_static() ) {
-			return get_option( 'page_for_posts' );
+	public function get_current_layout() {
+		$container = $this->get_container_type();
+
+		// Check customizer container type based on the context.
+		if ( empty( $container ) ) {
+			global $post_type;
+			$container = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
 		}
 
-		if ( is_search() ) {
-			return false;
-		}
-
-		if ( is_home() ) {
-			return false;
-		}
-
-		global $post;
-		if ( empty( $post ) ) {
-			return false;
-		}
-
-		$post_id = apply_filters( 'neve_post_meta_filters_post_id', $post->ID );
-
-		if ( ! isset( $post_id ) ) {
-			return false;
-		}
-
-		return $post_id;
+		return $container;
 	}
 
 	/**
@@ -216,92 +208,6 @@ class Metabox_Settings {
 		wp_add_inline_style( 'neve-gutenberg-style', $style );
 
 
-	}
-
-	/**
-	 * Get content width, if any.
-	 *
-	 * @return int|bool Content width.
-	 */
-	public function get_content_width() {
-		$post_id = $this->get_post_id();
-
-		if ( $post_id === false ) {
-			return false;
-		}
-
-		$content_width_status = get_post_meta( $post_id, self::ENABLE_CONTENT_WIDTH, true );
-		$content_width_status = empty( $content_width_status ) ? $this->get_content_width_status_default() : $content_width_status;
-		if ( $content_width_status !== 'on' ) {
-			return false;
-		}
-
-		return get_post_meta( $post_id, self::CONTENT_WIDTH, true );
-
-	}
-
-	/**
-	 * Get content width status default.
-	 *
-	 * @return string
-	 */
-	private function get_content_width_status_default() {
-		if ( (int) $this->get_post_id() === (int) get_option( 'woocommerce_checkout_page_id' ) ) {
-			return 'on';
-		}
-
-		return '';
-	}
-
-	/**
-	 * Return container type for the selected post.
-	 *
-	 * @return string
-	 */
-	public function get_current_layout() {
-		$container = $this->get_container_type();
-
-		// Check customizer container type based on the context.
-		if ( empty( $container ) ) {
-			global $post_type;
-			$container = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
-		}
-
-		return $container;
-	}
-
-	/**
-	 * Get continer type for current post.
-	 *
-	 * @return mixed|string
-	 */
-	public function get_container_type() {
-
-		$post_id = $this->get_post_id();
-
-		$meta_value = get_post_meta( $post_id, self::CONTAINER, true );
-
-		if ( empty( $meta_value ) || $meta_value === 'default' ) {
-			return '';
-		}
-		if ( $post_id === false ) {
-			return '';
-		}
-
-		return $meta_value;
-	}
-
-	/**
-	 * Get content width status.
-	 *
-	 * @return int|string
-	 */
-	private function get_content_width_default() {
-		if ( (int) $this->get_post_id() === (int) get_option( 'woocommerce_checkout_page_id' ) ) {
-			return 100;
-		}
-
-		return 70;
 	}
 
 	/**
@@ -416,7 +322,7 @@ class Metabox_Settings {
 			return $position;
 		}
 
-		$meta_value = get_post_meta( $post_id, self::SIDEBAR, true );
+		$meta_value = get_post_meta( $post_id, 'neve_meta_sidebar', true );
 		if ( empty( $meta_value ) || $meta_value === 'default' ) {
 			return $position;
 		}
@@ -465,6 +371,73 @@ class Metabox_Settings {
 	}
 
 	/**
+	 * Get the post id.
+	 *
+	 * @return bool|string
+	 */
+	private function get_post_id() {
+		if ( $this->is_blog_static() ) {
+			return get_option( 'page_for_posts' );
+		}
+
+		if ( is_search() ) {
+			return false;
+		}
+
+		if ( is_home() ) {
+			return false;
+		}
+
+		global $post;
+		if ( empty( $post ) ) {
+			return false;
+		}
+
+		$post_id = apply_filters( 'neve_post_meta_filters_post_id', $post->ID );
+
+		if ( ! isset( $post_id ) ) {
+			return false;
+		}
+
+		return $post_id;
+	}
+
+	/**
+	 * Check if the blog is set to a static page.
+	 *
+	 * @return bool
+	 */
+	private function is_blog_static() {
+		return ( get_option( 'show_on_front' ) === 'page' && is_home() );
+	}
+
+	/**
+	 * Get content width status default.
+	 *
+	 * @return string
+	 */
+	private function get_content_width_status_default() {
+		if ( (int) $this->get_post_id() === (int) get_option( 'woocommerce_checkout_page_id' ) ) {
+			return 'on';
+		}
+
+		return '';
+	}
+
+	/**
+	 * Get content width status.
+	 *
+	 * @return int|string
+	 */
+	private function get_content_width_default() {
+		if ( (int) $this->get_post_id() === (int) get_option( 'woocommerce_checkout_page_id' ) ) {
+			return 100;
+		}
+
+		return 70;
+	}
+
+	/**
 	 * Post elements order for title components.
 	 *
 	 * @param array $elements_order Elements order before this filter.
@@ -478,7 +451,7 @@ class Metabox_Settings {
 			return $elements_order;
 		}
 
-		$meta_elements_order = get_post_meta( $post_id, self::ELEMENTS_ORDER, true );
+		$meta_elements_order = get_post_meta( $post_id, 'neve_post_elements_order', true );
 		if ( empty( $meta_elements_order ) ) {
 			return $elements_order;
 		}
@@ -500,11 +473,10 @@ class Metabox_Settings {
 			return $alignment;
 		}
 
-		$title_meta_alignment = get_post_meta( $post_id, self::TITLE_ALIGNMENT, true );
+		$title_meta_alignment = get_post_meta( $post_id, 'neve_meta_title_alignment', true );
 		if ( ! empty( $title_meta_alignment ) ) {
 			return 'has-text-align-' . $title_meta_alignment;
 		}
-
 		return $alignment;
 	}
 
@@ -522,7 +494,7 @@ class Metabox_Settings {
 		if ( $post_id === false ) {
 			return $show_avatar;
 		}
-		$show_author_avatar = get_post_meta( $post_id, self::SHOW_AVATAR, true );
+		$show_author_avatar = get_post_meta( $post_id, 'neve_meta_author_avatar', true );
 
 		if ( ! empty( $show_author_avatar ) ) {
 			return $show_author_avatar === 'on';
