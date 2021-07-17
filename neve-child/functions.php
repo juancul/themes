@@ -587,7 +587,7 @@ function add_select_country_state() {
     $prod_id = get_the_ID();
     if( has_term( 'rayco', 'product_cat' , $prod_id) ) {
         
-        echo '<div class="woocommerce-info">Este servicio de alquiler es prestado, entregado y facturado por Distribuidora Rayco. <strong>Solamente disponible en Bucaramanga.</strong></div>';
+        echo '<div class="woocommerce-info">Este servicio de alquiler es prestado, entregado y facturado por Distribuidora Rayco. <strong>Solamente disponible en Cali, Cartagena y Bucaramanga.</strong></div>';
         echo '<div class="woocommerce-info">Selecciona tu departamento: '.do_shortcode('[vcwccr_country_selector]').'</div>';
     }
     
