@@ -398,7 +398,7 @@ add_filter( 'automatewoo/guest_capture_fields', 'my_guest_capture_fields' );
  * @param array $selectors
  */
 function my_guest_capture_fields( $selectors ) {
-    $selectors[] = '#hustle-field-email-module-1';
+    $selectors[] = '#hustle-field-email-module-7';
     $selectors[] = '.hustle-input ';
     return $selectors;
 }
