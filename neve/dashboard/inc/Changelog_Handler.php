@@ -68,14 +68,14 @@ class Changelog_Handler {
 				);
 				continue;
 			}
-			if ( preg_match( '/[*|-]?\s?(\[fix]|\[Fix]|fix|Fix)[:]?\s?\b/', $changelog_line ) ) {
-				$changelog_line                        = preg_replace( '/[*|-]?\s?(\[fix]|\[Fix]|fix|Fix)[:]?\s?\b/', '', $changelog_line );
+			if ( preg_match( '/[*|-]?\s?(\[fix]|\[Fix]|fix|Fix)[:]?\s?(\b|(?=\[))/', $changelog_line ) ) {
+				$changelog_line                        = preg_replace( '/[*|-]?\s?(\[fix]|\[Fix]|fix|Fix)[:]?\s?(\b|(?=\[))/', '', $changelog_line );
 				$releases[ $release_count ]['fixes'][] = $this->parse_md_and_clean( $changelog_line );
 				continue;
 			}
 
-			if ( preg_match( '/[*|-]?\s?(\[feat]|\[Feat]|feat|Feat)[:]?\s?\b/', $changelog_line ) ) {
-				$changelog_line                           = preg_replace( '/[*|-]?\s?(\[feat]|\[Feat]|feat|Feat)[:]?\s?\b/', '', $changelog_line );
+			if ( preg_match( '/[*|-]?\s?(\[feat]|\[Feat]|feat|Feat)[:]?\s?(\b|(?=\[))/', $changelog_line ) ) {
+				$changelog_line                           = preg_replace( '/[*|-]?\s?(\[feat]|\[Feat]|feat|Feat)[:]?\s?(\b|(?=\[))/', '', $changelog_line );
 				$releases[ $release_count ]['features'][] = $this->parse_md_and_clean( $changelog_line );
 				continue;
 			}
@@ -100,13 +100,16 @@ class Changelog_Handler {
 	 * @return string
 	 */
 	private function parse_md_and_clean( $string ) {
-		// Drop starting lines and asterisks.
-		$string = trim( str_replace( [ '*', '-' ], '', $string ) );
+		// Drop spaces, starting lines | asterisks.
+		$string = trim( $string );
+		$string = ltrim( $string, '*' );
+		$string = ltrim( $string, '-' );
+
 		// Replace markdown links with <a> tags.
 		$string = preg_replace_callback(
 			'/\[(.*?)]\((.*?)\)/',
 			function ( $matches ) {
-				return '<a href="' . $matches[2] . '"><i class="dashicons dashicons-external"></i>' . $matches[1] . '</a>';
+				return '<a href="' . $matches[2] . '" target="_blank" rel="noopener"><i class="dashicons dashicons-external"></i>' . $matches[1] . '</a>';
 			},
 			htmlspecialchars( $string )
 		);

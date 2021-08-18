@@ -19,6 +19,90 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 3.0.1](https://github.com/Codeinwp/neve/compare/v3.0.0...v3.0.1) (2021-08-06)
+
+- [Fix] bring back custom-background theme support
+- [Fix] input type reset on new skin
+- [Fix] fatal error because of non-existent class property
+- [Fix] footer row display when using old skin
+- [Fix] single product top wrap priority
+- [Fix] builder breaking in specific edge-case when using the pro version
+
+
+
+
+#### [Version 3.0.0](https://github.com/Codeinwp/neve/compare/v2.11.6...v3.0.0) (2021-08-04)
+
+- [Feat] New Header & Footer builder experience
+- [Feat] New default skin for frontend with better performance and page weight - [Learn more](https://docs.themeisle.com/article/1388-neve-3-0-core-design)
+- [Feat] Color palette switcher header component (dark mode toggle) - [Learn more](https://docs.themeisle.com/article/1358-header-palette-switch-dark-light-theme)
+- [Feat] New single post layout and customization options
+- [Fix] Improve accessibility for the search form
+- [Fix] Scripts appearing next to single product buttons
+- [Fix] Compatibility issue with the PW WooCommerce Gift Cards plugin 
+- [Fix] Compatibility issue with the WooCommerce Appointments plugin
+- [Fix] Wishlist button looking distorted on the product page with sticky add to cart enabled
+- [Fix] magic tag for {meta_author} not rendering the author avatar
+- [Fix] Modified the check for the sidebar so that it does not conflict with the individual post settings
+- [Fix] Disable Neve Styles on Custom Single Product and Products Archive Elementor Templates
+- [Fix] Compatibility for Gutenberg widgets editor inside the customizer
+- Add ability to self-heal theme mods in case of corrupted value
+- Remove Otter compatibility for Gutenberg Templates
+
+
+
+
+##### [Version 2.11.6](https://github.com/Codeinwp/neve/compare/v2.11.5...v2.11.6) (2021-06-01)
+
+- [Fix] wishlist button on single product pages
+
+
+
+
+##### [Version 2.11.5](https://github.com/Codeinwp/neve/compare/v2.11.4...v2.11.5) (2021-05-31)
+
+- [Fix] Header cart doesn't show a dropdown when adding a new product to the cart
+- [Fix] Replace current implementation to update meta with Data API
+- [Fix] Image width of archive products are not wide enough
+- [Fix] External links behavior on the changelog page
+
+
+
+
+##### [Version 2.11.4](https://github.com/Codeinwp/neve/compare/v2.11.3...v2.11.4) (2021-05-14)
+
+- [Fix] font weights not getting properly enqueued when some font families are set to inherit
+- [Fix] CSS error causing padding issues on some Gutenberg blocks
+
+
+
+
+##### [Version 2.11.3](https://github.com/Codeinwp/neve/compare/v2.11.2...v2.11.3) (2021-05-12)
+
+- [Fix] Editor text color not working as expected
+- [Fix] Editor group block and columns block child blocks not inheriting text color
+- Restyle post date styling inside latest posts widget
+
+
+
+
+##### [Version 2.11.2](https://github.com/Codeinwp/neve/compare/v2.11.1...v2.11.2) (2021-04-28)
+
+- [Fix] Dropdowns (input select) in specific widgets do not respect global form styles  - https://github.com/Codeinwp/neve/issues/2581
+- [Fix] Wrong text color inheritance in group blocks with color settings - https://github.com/Codeinwp/neve/issues/2540
+- [Fix] Cart icon opening behavior when positioned on the left side of header - https://github.com/Codeinwp/neve/issues/2468
+- [Fix] Improve accessibility for external links in the Neve page and customizer
+- [Fix] Color Picker Modal remains open even after switching Color Palettes - https://github.com/Codeinwp/neve/issues/2628
+- [Fix] Increase Templates Cloud visibility on Neve options page
+- [Fix] Infinite scroll loads posts of incorrect language - https://github.com/Codeinwp/neve/issues/2696
+- [Feat] Add global color as presets in beaver builder - https://github.com/Codeinwp/neve/issues/2328.
+- [Feat] Ignore lazyload on above the fold images 
+- [Feat] implement next page links for infinite scroll
+- [Feat] Adds compatibility for meta association on template import/export for Neve Cloud
+
+
+
+
 ##### [Version 2.11.1](https://github.com/Codeinwp/neve/compare/v2.11.0...v2.11.1) (2021-04-13)
 
 - [Fix] Fatal error caused by the removal of some global functions

@@ -345,6 +345,31 @@ final class Astra_Builder_Helper {
 	private static $instance = null;
 
 	/**
+	 * Member Variable
+	 *
+	 * @var grid_size_mapping
+	 */
+	public static $grid_size_mapping = array(
+		'6-equal'    => 'repeat( 6, 1fr )',
+		'5-equal'    => 'repeat( 5, 1fr )',
+		'4-equal'    => 'repeat( 4, 1fr )',
+		'4-lheavy'   => '2fr 1fr 1fr 1fr',
+		'4-rheavy'   => '1fr 1fr 1fr 2fr',
+		'3-equal'    => 'repeat( 3, 1fr )',
+		'3-lheavy'   => '2fr 1fr 1fr',
+		'3-rheavy'   => '1fr 1fr 2fr',
+		'3-cheavy'   => '1fr 2fr 1fr',
+		'3-cwide'    => '1fr 3fr 1fr',
+		'3-firstrow' => '1fr 1fr',
+		'3-lastrow'  => '1fr 1fr',
+		'2-equal'    => 'repeat( 2, 1fr )',
+		'2-lheavy'   => '2fr 1fr',
+		'2-rheavy'   => '1fr 2fr',
+		'2-full'     => '2fr',
+		'full'       => '1fr',
+	);
+
+	/**
 	 *  Initiator
 	 */
 	public static function get_instance() {
@@ -622,7 +647,7 @@ final class Astra_Builder_Helper {
 			'astra_header_desktop_items',
 			array(
 				'logo'    => array(
-					'name'    => __( 'Logo', 'astra' ),
+					'name'    => __( 'Site Identity & Logo', 'astra' ),
 					'icon'    => 'admin-appearance',
 					'section' => 'title_tagline',
 					'delete'  => false,
@@ -685,7 +710,7 @@ final class Astra_Builder_Helper {
 			'astra_header_mobile_items',
 			array(
 				'logo'           => array(
-					'name'    => __( 'Logo', 'astra' ),
+					'name'    => __( 'Site Identity & Logo', 'astra' ),
 					'icon'    => 'admin-appearance',
 					'section' => 'title_tagline',
 				),
@@ -783,12 +808,12 @@ final class Astra_Builder_Helper {
 	 * @return array $args Updated arguments as per the filter.
 	 */
 	public function deprecate_old_header_and_footer( $args ) {
-
 		if ( self::$is_header_footer_builder_active ) {
 			unset( $args['mobile-header'] );
 			unset( $args['header-sections'] );
 			unset( $args['advanced-footer'] );
 		}
+
 		return $args;
 	}
 

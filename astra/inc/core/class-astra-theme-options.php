@@ -96,6 +96,13 @@ if ( ! class_exists( 'Astra_Theme_Options' ) ) {
 				return self::$defaults;
 			}
 
+			/**
+			 * Update Astra customizer default values. To not update directly on existing users site, added backwards.
+			 *
+			 * @since 3.6.3
+			 */
+			$apply_new_default_values = astra_button_default_padding_updated();
+
 			// Defaults list of options.
 			self::$defaults = apply_filters(
 				'astra_theme_defaults',
@@ -128,8 +135,8 @@ if ( ! class_exists( 'Astra_Theme_Options' ) ) {
 					),
 					// Colors.
 					'text-color'                           => '#3a3a3a',
-					'link-color'                           => '#0274be',
-					'theme-color'                          => '#0274be',
+					'link-color'                           => '#0170B9',
+					'theme-color'                          => '#0170B9',
 					'link-h-color'                         => '#3a3a3a',
 
 					// Footer Bar Background.
@@ -170,22 +177,22 @@ if ( ! class_exists( 'Astra_Theme_Options' ) ) {
 					'button-bg-h-color'                    => '',
 					'theme-button-padding'                 => array(
 						'desktop'      => array(
-							'top'    => 10,
-							'right'  => 40,
-							'bottom' => 10,
-							'left'   => 40,
+							'top'    => $apply_new_default_values ? 15 : 10,
+							'right'  => $apply_new_default_values ? 30 : 40,
+							'bottom' => $apply_new_default_values ? 15 : 10,
+							'left'   => $apply_new_default_values ? 30 : 40,
 						),
 						'tablet'       => array(
-							'top'    => '',
-							'right'  => '',
-							'bottom' => '',
-							'left'   => '',
+							'top'    => $apply_new_default_values ? 14 : '',
+							'right'  => $apply_new_default_values ? 28 : '',
+							'bottom' => $apply_new_default_values ? 14 : '',
+							'left'   => $apply_new_default_values ? 28 : '',
 						),
 						'mobile'       => array(
-							'top'    => '',
-							'right'  => '',
-							'bottom' => '',
-							'left'   => '',
+							'top'    => $apply_new_default_values ? 12 : '',
+							'right'  => $apply_new_default_values ? 24 : '',
+							'bottom' => $apply_new_default_values ? 12 : '',
+							'left'   => $apply_new_default_values ? 24 : '',
 						),
 						'desktop-unit' => 'px',
 						'tablet-unit'  => 'px',
@@ -216,8 +223,19 @@ if ( ! class_exists( 'Astra_Theme_Options' ) ) {
 						'tablet'  => '',
 						'mobile'  => '',
 					),
-					'display-site-title'                   => 1,
-					'display-site-tagline'                 => 0,
+					'header-color-site-title'              => '',
+					'header-color-h-site-title'            => '',
+					'header-color-site-tagline'            => '',
+					'display-site-title-responsive'        => array(
+						'desktop' => 1,
+						'tablet'  => 1,
+						'mobile'  => 1,
+					),
+					'display-site-tagline-responsive'      => array(
+						'desktop' => 0,
+						'tablet'  => 0,
+						'mobile'  => 0,
+					),
 					'logo-title-inline'                    => 1,
 					// Header - Primary.
 					'disable-primary-nav'                  => false,
@@ -294,7 +312,7 @@ if ( ! class_exists( 'Astra_Theme_Options' ) ) {
 
 					'header-main-menu-label'               => '',
 					'header-main-menu-align'               => 'inline',
-					'header-main-submenu-container-animation' => 'fade',
+					'header-main-submenu-container-animation' => '',
 					'mobile-header-breakpoint'             => '',
 					'mobile-header-logo'                   => '',
 					'mobile-header-logo-width'             => '',
@@ -353,6 +371,7 @@ if ( ! class_exists( 'Astra_Theme_Options' ) ) {
 
 					'body-line-height'                     => '',
 					'para-margin-bottom'                   => '',
+					'underline-content-links'              => true,
 					'body-text-transform'                  => '',
 					'headings-font-family'                 => 'inherit',
 					'headings-font-weight'                 => 'inherit',
@@ -465,6 +484,10 @@ if ( ! class_exists( 'Astra_Theme_Options' ) ) {
 
 					// toogle menu target.
 					'mobile-header-toggle-target'          => 'icon',
+
+					// Performance.
+					'load-google-fonts-locally'            => false,
+					'preload-local-fonts'                  => false,
 				)
 			);
 

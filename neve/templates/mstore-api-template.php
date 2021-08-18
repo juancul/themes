@@ -378,7 +378,7 @@ if ($data != null):
                                                                 <td class="product-name">
                                                                     <?= apply_filters('woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key) . '&nbsp;'; ?>
                                                                     <?= apply_filters('woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf('&times; %s', $cart_item['quantity']) . '</strong>', $cart_item, $cart_item_key); ?>
-                                                                    <?= WC()->cart->get_item_data($cart_item); ?>
+                                                                    <?= wc_get_formatted_cart_item_data($cart_item); ?>
                                                                 </td>
                                                                 <td class="product-total">
                                                                     <?= apply_filters('woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal($_product, $cart_item['quantity']), $cart_item, $cart_item_key); ?>
@@ -422,7 +422,7 @@ if ($data != null):
                                                         </tr>
                                                     <?php endforeach; ?>
 
-                                                    <?php if (wc_tax_enabled() && 'excl' === WC()->cart->tax_display_cart) : ?>
+                                                    <?php if (wc_tax_enabled() && 'excl' === WC()->cart->get_tax_price_display_mode()) : ?>
                                                         <?php if ('itemized' === get_option('woocommerce_tax_total_display')) : ?>
                                                             <?php foreach (WC()->cart->get_tax_totals() as $code => $tax) : ?>
                                                                 <tr class="tax-rate tax-rate-<?= esc_attr(sanitize_title($code)); ?>">

@@ -130,9 +130,7 @@ if ( ! class_exists( 'Astra_Admin_Settings' ) ) {
 			add_action( 'astra_header_right_section', __CLASS__ . '::top_header_right_section' );
 
 			add_action( 'astra_welcome_page_right_sidebar_content', __CLASS__ . '::astra_welcome_page_starter_sites_section', 10 );
-			add_action( 'astra_welcome_page_right_sidebar_content', __CLASS__ . '::astra_welcome_page_knowledge_base_scetion', 11 );
-			add_action( 'astra_welcome_page_right_sidebar_content', __CLASS__ . '::astra_welcome_page_community_scetion', 12 );
-			add_action( 'astra_welcome_page_right_sidebar_content', __CLASS__ . '::astra_welcome_page_five_star_scetion', 13 );
+			add_action( 'astra_welcome_page_right_sidebar_content', __CLASS__ . '::external_important_links_section', 11 );
 
 			add_action( 'astra_welcome_page_content', __CLASS__ . '::astra_welcome_page_content' );
 			add_action( 'astra_welcome_page_content', __class__ . '::astra_available_plugins', 30 );
@@ -141,10 +139,12 @@ if ( ! class_exists( 'Astra_Admin_Settings' ) ) {
 			add_action( 'wp_ajax_astra-sites-plugin-activate', __CLASS__ . '::required_plugin_activate' );
 			add_action( 'wp_ajax_astra-sites-plugin-deactivate', __CLASS__ . '::required_plugin_deactivate' );
 
-			add_action( 'admin_notices', __CLASS__ . '::register_notices' );
+			add_action( 'astra_notice_before_markup_astra-sites-on-active', __CLASS__ . '::load_astra_admin_script' );
+
+			add_action( 'admin_init', __CLASS__ . '::register_notices' );
 			add_action( 'astra_notice_before_markup', __CLASS__ . '::notice_assets' );
 
-			add_action( 'admin_notices', __CLASS__ . '::minimum_addon_version_notice' );
+			add_action( 'admin_init', __CLASS__ . '::minimum_addon_version_notice' );
 		}
 
 		/**
@@ -185,7 +185,6 @@ if ( ! class_exists( 'Astra_Admin_Settings' ) ) {
 			// Force Astra welcome notice on theme activation.
 			if ( current_user_can( 'install_plugins' ) && ! defined( 'ASTRA_SITES_NAME' ) && '1' == get_option( 'fresh_site' ) ) {
 
-				wp_enqueue_script( 'astra-admin-settings' );
 				$image_path           = ASTRA_THEME_URI . 'inc/assets/images/astra-logo.svg';
 				$ast_sites_notice_btn = self::astra_sites_notice_button();
 
@@ -217,7 +216,7 @@ if ( ! class_exists( 'Astra_Admin_Settings' ) ) {
 							</div>',
 						$image_path,
 						__( 'Thank you for installing Astra!', 'astra' ),
-						__( 'Did you know Astra comes with dozens of ready-to-use <a href="https://wpastra.com/ready-websites/?utm_source=install-notice">starter templates</a>? Install the Starter Templates plugin to get started.', 'astra' ),
+						__( 'Did you know Astra comes with dozens of ready-to-use <a href="https://wpastra.com/starter-templates/?utm_source=install-notice">starter templates</a>? Install the Starter Templates plugin to get started.', 'astra' ),
 						esc_attr( $ast_sites_notice_btn['class'] ),
 						'href="' . astra_get_prop( $ast_sites_notice_btn, 'link', '' ) . '"',
 						'data-slug="' . astra_get_prop( $ast_sites_notice_btn, 'data_slug', '' ) . '"',
@@ -439,6 +438,9 @@ if ( ! class_exists( 'Astra_Admin_Settings' ) ) {
 					'recommendedPluiginDeactivateText'   => __( 'Deactivate', 'astra' ),
 					'recommendedPluiginSettingsText'     => __( 'Settings', 'astra' ),
 					'astraPluginManagerNonce'            => wp_create_nonce( 'astra-recommended-plugin-nonce' ),
+					'ajax_nonce'                         => wp_create_nonce( 'astra-builder-module-nonce' ),
+					'old_header_footer'                  => __( 'Use Old Header/Footer', 'astra' ),
+					'migrate_to_builder'                 => __( 'Use New Header/Footer Builder', 'astra' ),
 				);
 
 				wp_localize_script( 'astra-admin-settings', 'astra', apply_filters( 'astra_theme_js_localize', $localize ) );
@@ -458,6 +460,28 @@ if ( ! class_exists( 'Astra_Admin_Settings' ) ) {
 			} else {
 				wp_enqueue_style( 'astra-admin-settings', ASTRA_THEME_URI . 'inc/assets/css/astra-admin-menu-settings.css', array(), ASTRA_THEME_VERSION );
 			}
+
+			if ( ! current_user_can( 'manage_options' ) ) {
+				return;
+			}
+
+			if ( ! file_exists( WP_PLUGIN_DIR . '/astra-sites/astra-sites.php' ) && is_plugin_inactive( 'astra-pro-sites/astra-pro-sites.php' ) ) {
+				// For starter site plugin popup detail "Details &#187;" on Astra Options page.
+				wp_enqueue_script( 'plugin-install' );
+				wp_enqueue_script( 'thickbox' );
+				wp_enqueue_style( 'thickbox' );
+			}
+
+			// Script.
+			wp_enqueue_script( 'astra-admin-settings' );
+		}
+
+		/**
+		 * Get register & enqueue astra-admin scripts.
+		 *
+		 * @since 3.6.6
+		 */
+		public static function load_astra_admin_script() {
 
 			if ( ! current_user_can( 'manage_options' ) ) {
 				return;
@@ -484,15 +508,7 @@ if ( ! class_exists( 'Astra_Admin_Settings' ) ) {
 
 			// Script.
 			wp_enqueue_script( 'astra-admin-settings' );
-
-			if ( ! file_exists( WP_PLUGIN_DIR . '/astra-sites/astra-sites.php' ) && is_plugin_inactive( 'astra-pro-sites/astra-pro-sites.php' ) ) {
-				// For starter site plugin popup detail "Details &#187;" on Astra Options page.
-				wp_enqueue_script( 'plugin-install' );
-				wp_enqueue_script( 'thickbox' );
-				wp_enqueue_style( 'thickbox' );
-			}
 		}
-
 
 		/**
 		 * Get and return page URL
@@ -587,6 +603,72 @@ if ( ! class_exists( 'Astra_Admin_Settings' ) ) {
 		}
 
 		/**
+		 * External links through Astra Options page.
+		 *
+		 * @since 3.4.0
+		 */
+		public static function external_important_links_section() {
+
+			if ( astra_is_white_labelled() ) {
+				return;
+			}
+			?>
+
+			<div class="postbox">
+				<h2 class="hndle ast-normal-cursor">
+					<span><?php echo esc_html( apply_filters( 'astra_other_links_postbox_title', __( 'Important Links', 'astra' ) ) ); ?></span>
+				</h2>
+				<div class="inside">
+					<ul class="ast-other-links-list">
+						<li>
+							<span class="dashicons dashicons-admin-home"></span>
+							<a href="https://wpastra.com/" target="_blank" rel="noopener"> <?php esc_html_e( 'Astra Website', 'astra' ); ?> </a>
+						</li>
+						<li>
+							<span class="dashicons dashicons-book"></span>
+							<a href="https://wpastra.com/docs/?utm_campaign=welcome-page" target="_blank" rel="noopener"> <?php esc_html_e( 'Knowledge Base', 'astra' ); ?> </a>
+						</li>
+						<li>
+							<span class="dashicons dashicons-sos"></span>
+							<a href="https://wpastra.com/contact/?utm_campaign=welcome-page" target="_blank" rel="noopener"> <?php esc_html_e( 'Five Star Support', 'astra' ); ?> </a>
+						</li>
+						<li>
+							<span class="dashicons dashicons-groups"></span>
+							<a href="https://www.facebook.com/groups/wpastra" target="_blank" rel="noopener"> <?php esc_html_e( 'Users Community Group', 'astra' ); ?> </a>
+						</li>
+						<li>
+							<span class="dashicons dashicons-star-filled"></span>
+							<a href="https://wordpress.org/support/theme/astra/reviews/?rate=5#new-post" target="_blank" rel="noopener"> <?php esc_html_e( 'Rate Us ★★★★★', 'astra' ); ?> </a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<?php
+		}
+
+		/**
+		 * Starter Templates Post Box Title.
+		 *
+		 * @since 3.4.0
+		 *
+		 * @return string Starter Templates Plugin name.
+		 */
+		public static function get_starter_templates_title() {
+
+			$astra_sites_name = __( '150+ Starter Templates', 'astra' );
+
+			if ( method_exists( 'Astra_Ext_White_Label_Markup', 'get_whitelabel_string' ) ) {
+				$white_labelled_astra_sites_name = Astra_Ext_White_Label_Markup::get_whitelabel_string( 'astra-sites', 'name' );
+				if ( ! empty( $white_labelled_astra_sites_name ) ) {
+					$astra_sites_name = $white_labelled_astra_sites_name;
+				}
+			}
+
+			return $astra_sites_name;
+		}
+
+		/**
 		 * Include Welcome page right starter sites content
 		 *
 		 * @since 1.2.4
@@ -601,13 +683,13 @@ if ( ! class_exists( 'Astra_Admin_Settings' ) ) {
 			<div class="postbox">
 				<h2 class="hndle ast-normal-cursor">
 					<span class="dashicons dashicons-admin-customizer"></span>
-					<span><?php echo esc_html( apply_filters( 'astra_sites_menu_page_title', __( 'Import Starter Template', 'astra' ) ) ); ?></span>
+					<span><?php echo self::get_starter_templates_title();  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 				</h2>
 				<img class="ast-starter-sites-img" alt="Starter Templates" src="<?php echo esc_url( ASTRA_THEME_URI . 'assets/images/astra-starter-sites.jpg' ); ?>">
 				<div class="inside">
 					<p>
 						<?php
-							$astra_starter_sites_doc_link      = apply_filters( 'astra_starter_sites_documentation_link', astra_get_pro_url( 'https://wpastra.com/docs/installing-importing-astra-sites', 'astra-dashboard', 'how-astra-sites-works', 'welcome-page' ) );
+							$astra_starter_sites_doc_link      = apply_filters( 'astra_starter_sites_documentation_link', astra_get_pro_url( 'https://wpastra.com/starter-templates', 'astra-dashboard', 'astra-starter-templates', 'astra-options-page' ) );
 							$astra_starter_sites_doc_link_text = apply_filters( 'astra_starter_sites_doc_link_text', __( 'Starter Templates?', 'astra' ) );
 							printf(
 								/* translators: %1$s: Starter site link. */
@@ -620,7 +702,7 @@ if ( ! class_exists( 'Astra_Admin_Settings' ) ) {
 					</p>
 					<p>
 						<?php
-							esc_html_e( 'Import your favorite site in one click and start your project with style!', 'astra' );
+							esc_html_e( 'Choose from over 150 beautiful templates and kickstart your project!', 'astra' );
 						?>
 					</p>
 						<?php
@@ -649,139 +731,6 @@ if ( ! class_exists( 'Astra_Admin_Settings' ) ) {
 				</div>
 			</div>
 
-			<?php
-		}
-
-		/**
-		 * Include Welcome page right side knowledge base content
-		 *
-		 * @since 1.2.4
-		 */
-		public static function astra_welcome_page_knowledge_base_scetion() {
-
-			if ( astra_is_white_labelled() ) {
-				return;
-			}
-
-			?>
-
-			<div class="postbox">
-				<h2 class="hndle ast-normal-cursor">
-					<span class="dashicons dashicons-book"></span>
-					<span><?php esc_html_e( 'Knowledge Base', 'astra' ); ?></span>
-				</h2>
-				<div class="inside">
-					<p>
-						<?php esc_html_e( 'Not sure how something works? Take a peek at the knowledge base and learn.', 'astra' ); ?>
-					</p>
-					<?php
-					$astra_knowledge_base_doc_link      = apply_filters( 'astra_knowledge_base_documentation_link', astra_get_pro_url( 'https://wpastra.com/docs/', 'astra-dashboard', 'visit-documentation', 'welcome-page' ) );
-					$astra_knowledge_base_doc_link_text = apply_filters( 'astra_knowledge_base_documentation_link_text', __( 'Visit Knowledge Base &#187;', 'astra' ) );
-
-					printf(
-						/* translators: %1$s: Astra Knowledge doc link. */
-						'%1$s',
-						! empty( $astra_knowledge_base_doc_link ) ? '<a href=' . esc_url( $astra_knowledge_base_doc_link ) . ' target="_blank" rel="noopener">' . esc_html( $astra_knowledge_base_doc_link_text ) . '</a>' :
-						esc_html( $astra_knowledge_base_doc_link_text )
-					);
-					?>
-				</div>
-			</div>
-			<?php
-		}
-
-		/**
-		 * Include Welcome page right side Astra community content
-		 *
-		 * @since 1.2.4
-		 */
-		public static function astra_welcome_page_community_scetion() {
-
-			if ( astra_is_white_labelled() ) {
-				return;
-			}
-
-			?>
-
-			<div class="postbox">
-				<h2 class="hndle ast-normal-cursor">
-					<span class="dashicons dashicons-groups"></span>
-					<span>
-						<?php
-						printf(
-							/* translators: %1$s: Astra Theme name. */
-							esc_html__( '%1$s Community', 'astra' ),
-							esc_html( self::$page_title )
-						);
-						?>
-				</h2>
-				<div class="inside">
-					<p>
-						<?php
-						printf(
-							/* translators: %1$s: Astra Theme name. */
-							esc_html__( 'Join the community of super helpful %1$s users. Say hello, ask questions, give feedback and help each other!', 'astra' ),
-							esc_html( self::$page_title )
-						);
-						?>
-					</p>
-					<?php
-					$astra_community_group_link      = apply_filters( 'astra_community_group_link', 'https://www.facebook.com/groups/wpastra' );
-					$astra_community_group_link_text = apply_filters( 'astra_community_group_link_text', __( 'Join Our Facebook Group &#187;', 'astra' ) );
-
-					printf(
-						/* translators: %1$s: Astra Knowledge doc link. */
-						'%1$s',
-						! empty( $astra_community_group_link ) ? '<a href=' . esc_url( $astra_community_group_link ) . ' target="_blank" rel="noopener">' . esc_html( $astra_community_group_link_text ) . '</a>' :
-						esc_html( $astra_community_group_link_text )
-					);
-					?>
-				</div>
-			</div>
-			<?php
-		}
-
-		/**
-		 * Include Welcome page right side Five Star Support
-		 *
-		 * @since 1.2.4
-		 */
-		public static function astra_welcome_page_five_star_scetion() {
-
-			if ( astra_is_white_labelled() ) {
-				return;
-			}
-
-			?>
-
-			<div class="postbox">
-				<h2 class="hndle ast-normal-cursor">
-					<span class="dashicons dashicons-sos"></span>
-					<span><?php esc_html_e( 'Five Star Support', 'astra' ); ?></span>
-				</h2>
-				<div class="inside">
-					<p>
-						<?php
-						printf(
-							/* translators: %1$s: Astra Theme name. */
-							esc_html__( 'Got a question? Get in touch with %1$s developers. We\'re happy to help!', 'astra' ),
-							esc_html( self::$page_title )
-						);
-						?>
-					</p>
-					<?php
-						$astra_support_link      = apply_filters( 'astra_support_link', astra_get_pro_url( 'https://wpastra.com/contact/', 'astra-dashboard', 'submit-a-ticket', 'welcome-page' ) );
-						$astra_support_link_text = apply_filters( 'astra_support_link_text', __( 'Submit a Ticket &#187;', 'astra' ) );
-
-						printf(
-							/* translators: %1$s: Astra Knowledge doc link. */
-							'%1$s',
-							! empty( $astra_support_link ) ? '<a href=' . esc_url( $astra_support_link ) . ' target="_blank" rel="noopener">' . esc_html( $astra_support_link_text ) . '</a>' :
-							esc_html( $astra_support_link_text )
-						);
-					?>
-				</div>
-			</div>
 			<?php
 		}
 

@@ -273,11 +273,7 @@
 }
 .ast-field-settings-modal .astra-color-picker-wrap {
     position: relative;
-	top: 0;
-}
-.components-circular-option-picker__option-wrapper .components-circular-option-picker__option:focus::after {
-	width: 27px;
-    height: 27px;
+	top: 10px;
 }
 .ast-color-palette .components-circular-option-picker__option-wrapper {
     margin-right: 6px;
@@ -297,6 +293,15 @@
 .astra-popover-tabs .ast-clear-btn-inside-picker.components-button {
 	margin: 5px 20px 20px 15px;
 	padding: 0 8px;
+	border: 1px solid #ccc;
+	box-shadow: none;
+}
+.ast-clear-btn-inside-picker.components-button:hover, .astra-popover-tabs .ast-clear-btn-inside-picker.components-button:hover,
+.ast-clear-btn-inside-picker.components-button:focus, .astra-popover-tabs .ast-clear-btn-inside-picker.components-button:focus,
+.ast-clear-btn-inside-picker.components-button:active, .astra-popover-tabs .ast-clear-btn-inside-picker.components-button:active,
+.astra-popover-tabs [ID*="-gradient-view"] .components-circular-option-picker__clear:active {
+    box-shadow: none !important;
+    background: transparent !important;
 }
 .ast-clear-btn-inside-picker {
 	padding: 0 8px;
@@ -471,8 +476,11 @@
 }
 
 .ast-top-divider.customize-control-ast-toggle-control .ast-divider-title + .ast-togglecontrol-wrapper,
+.ast-bottom-divider.customize-control-ast-toggle-control .ast-divider-title + .ast-togglecontrol-wrapper,
+.ast-top-divider.customize-control-ast-responsive-toggle-control .ast-divider-title + .ast-responsive-toggle-control-wrapper,
 .ast-top-divider.customize-control-ast-responsive-color .ast-divider-title + .ast-control-wrap,
-.ast-top-divider.customize-control-ast-slider .ast-divider-title + .ast-slider-wrap {
+.ast-top-divider.customize-control-ast-slider .ast-divider-title + .ast-slider-wrap,
+.customize-control-ast-color-group .ast-divider-title + .ast-control-wrap {
     margin-top: 25px;
 }
 

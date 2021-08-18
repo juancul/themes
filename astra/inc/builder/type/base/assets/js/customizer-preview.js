@@ -371,6 +371,12 @@ function astra_builder_social_css( builder_type = 'header', social_count ) {
 						dynamicStyle += 'margin-left: ' + space + 'px;';
 						dynamicStyle += 'margin-right: ' + space + 'px;';
 						dynamicStyle += '} ';
+						dynamicStyle += selector + ' .' + builder_type + '-social-inner-wrap .ast-builder-social-element:first-child {';
+						dynamicStyle += 'margin-left: 0;';
+						dynamicStyle += '} ';
+						dynamicStyle += selector + ' .' + builder_type + '-social-inner-wrap .ast-builder-social-element:last-child {';
+						dynamicStyle += 'margin-right: 0;';
+						dynamicStyle += '} ';
 					}
 
 					if ( spacing.tablet != '' ) {
@@ -379,6 +385,12 @@ function astra_builder_social_css( builder_type = 'header', social_count ) {
 						dynamicStyle += selector + ' .' + builder_type + '-social-inner-wrap .ast-builder-social-element {';
 						dynamicStyle += 'margin-left: ' + space + 'px;';
 						dynamicStyle += 'margin-right: ' + space + 'px;';
+						dynamicStyle += '} ';
+						dynamicStyle += selector + ' .' + builder_type + '-social-inner-wrap .ast-builder-social-element:first-child {';
+						dynamicStyle += 'margin-left: 0;';
+						dynamicStyle += '} ';
+						dynamicStyle += selector + ' .' + builder_type + '-social-inner-wrap .ast-builder-social-element:last-child {';
+						dynamicStyle += 'margin-right: 0;';
 						dynamicStyle += '} ';
 						dynamicStyle += '} ';
 					}
@@ -390,10 +402,16 @@ function astra_builder_social_css( builder_type = 'header', social_count ) {
 						dynamicStyle += 'margin-left: ' + space + 'px;';
 						dynamicStyle += 'margin-right: ' + space + 'px;';
 						dynamicStyle += '} ';
+						dynamicStyle += selector + ' .' + builder_type + '-social-inner-wrap .ast-builder-social-element:first-child {';
+						dynamicStyle += 'margin-left: 0;';
+						dynamicStyle += '} ';
+						dynamicStyle += selector + ' .' + builder_type + '-social-inner-wrap .ast-builder-social-element:last-child {';
+						dynamicStyle += 'margin-right: 0;';
+						dynamicStyle += '} ';
 						dynamicStyle += '} ';
 					}
 
-					astra_add_dynamic_css( builder_type + '-social-icons-icon-space-toggle-button', dynamicStyle );
+					astra_add_dynamic_css( builder_type + '-social-icons-icon-space', dynamicStyle );
 				} );
 			} );
 
@@ -497,7 +515,7 @@ function astra_builder_widget_css( builder_type = 'header' ) {
 
 		var selector = '.' + builder_type + '-widget-area[data-section="sidebar-widgets-' + builder_type + '-widget-' + index + '"]';
 
-		var section = 'sidebar-widgets-' + builder_type + '-widget-' + index;
+		var section = AstraBuilderWidgetData.has_block_editor ? 'astra-sidebar-widgets-' + builder_type + '-widget-' + index : 'sidebar-widgets-' + builder_type + '-widget-' + index;
 
 		// Widget Content Color.
 		astra_color_responsive_css(
@@ -547,7 +565,10 @@ function astra_builder_widget_css( builder_type = 'header' ) {
 		astra_builder_visibility_css( section, selector, 'block' );
 
 		(function (index) {
-			wp.customize( 'astra-settings[sidebar-widgets-' + builder_type + '-widget-' + index + '-margin]', function( value ) {
+
+			var marginControl = AstraBuilderWidgetData.has_block_editor ? 'astra-sidebar-widgets-' + builder_type + '-widget-' + index + '-margin' : 'sidebar-widgets-' + builder_type + '-widget-' + index + '-margin';
+
+			wp.customize( 'astra-settings[' + marginControl + ']', function( value ) {
 				value.bind( function( margin ) {
 					var selector = '.' + builder_type + '-widget-area[data-section="sidebar-widgets-' + builder_type + '-widget-' + index + '"]';
 					if(
@@ -601,9 +622,9 @@ function astra_builder_widget_css( builder_type = 'header' ) {
 
 							dynamicStyle +=  '@media (max-width: ' + tablet_break_point + 'px) {';
 							if( AstraBuilderWidgetData.is_flex_based_css ){
-								dynamicStyle += '.footer-widget-area[data-section="sidebar-widgets-footer-widget-' + index + '"].footer-widget-area-inner {'; 
+								dynamicStyle += '.footer-widget-area[data-section="sidebar-widgets-footer-widget-' + index + '"].footer-widget-area-inner {';
 							}else{
-								dynamicStyle += '.footer-widget-area[data-section="sidebar-widgets-footer-widget-' + index + '"] .footer-widget-area-inner {'; 
+								dynamicStyle += '.footer-widget-area[data-section="sidebar-widgets-footer-widget-' + index + '"] .footer-widget-area-inner {';
 							}
 							dynamicStyle += 'text-align: ' + alignment['tablet'] + ';';
 							dynamicStyle += '} ';

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit00e3857043dbfb446068ab38bb14b82d
+class ComposerStaticInit2e16a4ddf02739fdecae35bc56836bf4
 {
     public static $files = array (
         'c730ac5ba4946398dd12db7e8d42d1c8' => __DIR__ . '/..' . '/codeinwp/themeisle-sdk/load.php',
@@ -51,13 +51,12 @@ class ComposerStaticInit00e3857043dbfb446068ab38bb14b82d
         'HFG\\Core\\Components\\MenuIcon' => __DIR__ . '/../..' . '/header-footer-grid/Core/Components/MenuIcon.php',
         'HFG\\Core\\Components\\Nav' => __DIR__ . '/../..' . '/header-footer-grid/Core/Components/Nav.php',
         'HFG\\Core\\Components\\NavFooter' => __DIR__ . '/../..' . '/header-footer-grid/Core/Components/NavFooter.php',
+        'HFG\\Core\\Components\\PaletteSwitch' => __DIR__ . '/../..' . '/header-footer-grid/Core/Components/PaletteSwitch.php',
         'HFG\\Core\\Components\\Search' => __DIR__ . '/../..' . '/header-footer-grid/Core/Components/Search.php',
         'HFG\\Core\\Components\\SearchResponsive' => __DIR__ . '/../..' . '/header-footer-grid/Core/Components/SearchResponsive.php',
         'HFG\\Core\\Components\\SecondNav' => __DIR__ . '/../..' . '/header-footer-grid/Core/Components/SecondNav.php',
         'HFG\\Core\\Css_Generator' => __DIR__ . '/../..' . '/header-footer-grid/Core/Css_Generator.php',
         'HFG\\Core\\Customizer' => __DIR__ . '/../..' . '/header-footer-grid/Core/Customizer.php',
-        'HFG\\Core\\Customizer\\Instructions_Control' => __DIR__ . '/../..' . '/header-footer-grid/Core/Customizer/Instructions_Control.php',
-        'HFG\\Core\\Customizer\\Instructions_Section' => __DIR__ . '/../..' . '/header-footer-grid/Core/Customizer/Instructions_Section.php',
         'HFG\\Core\\Interfaces\\Builder' => __DIR__ . '/../..' . '/header-footer-grid/Core/Interfaces/Builder.php',
         'HFG\\Core\\Interfaces\\Component' => __DIR__ . '/../..' . '/header-footer-grid/Core/Interfaces/Component.php',
         'HFG\\Core\\Magic_Tags' => __DIR__ . '/../..' . '/header-footer-grid/Core/Magic_Tags.php',
@@ -74,9 +73,9 @@ class ComposerStaticInit00e3857043dbfb446068ab38bb14b82d
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit00e3857043dbfb446068ab38bb14b82d::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit00e3857043dbfb446068ab38bb14b82d::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit00e3857043dbfb446068ab38bb14b82d::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit2e16a4ddf02739fdecae35bc56836bf4::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit2e16a4ddf02739fdecae35bc56836bf4::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit2e16a4ddf02739fdecae35bc56836bf4::$classMap;
 
         }, null, ClassLoader::class);
     }
