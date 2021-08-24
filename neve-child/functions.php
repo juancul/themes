@@ -596,3 +596,14 @@ function add_select_country_state() {
 
 // Add button to sop view
 add_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 20);
+
+
+// Move Woocommerce category description to below product loop
+function nv_remove_category_description_before_loop() {
+      remove_action( 'neve_before_shop_loop_content', 'woocommerce_taxonomy_archive_description', 10 );
+      add_action( 'woocommerce_after_shop_loop', 'woocommerce_taxonomy_archive_description', 100 );
+}
+
+add_action( 'init', 'nv_remove_category_description_before_loop', 1 );
+
+
