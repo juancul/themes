@@ -2375,8 +2375,11 @@ audio {
   #comments .nv-comments-list > li {
     margin-top: 20px;
   }
-  #comments ol > ol {
+  #comments ol > .children {
     padding-right: 20px;
+  }
+  #comments .children {
+    margin-top: 20px;
   }
   #comments .comment-form {
     grid-template-columns: repeat(3, 1fr);

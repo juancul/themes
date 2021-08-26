@@ -9,12 +9,19 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-08-06T11:18:22+00:00\n"
+"POT-Creation-Date: 2021-08-23T13:15:21+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: neve\n"
 
 #. Theme Name of the theme
+#. translators: Theme Name
+#: inc/admin/troubleshoot/main.php:38
+#: inc/admin/troubleshoot/main.php:79
+#: inc/admin/troubleshoot/main.php:93
+#: inc/admin/troubleshoot/main.php:96
+#: inc/admin/troubleshoot/main.php:102
+#: inc/admin/troubleshoot/main.php:115
 #: inc/admin/metabox/src/components/Sidebar.js:62
 msgid "Neve"
 msgstr ""
@@ -43,7 +50,6 @@ msgid "Options"
 msgstr ""
 
 #. translators: %s - Theme name
-#. translators: %s - Theme Name
 #: dashboard/inc/Main.php:202
 #: inc/admin/metabox/src/components/Sidebar.js:62
 msgid "%s Options"
@@ -51,7 +57,7 @@ msgstr ""
 
 #. translators: %s - Theme name
 #: dashboard/inc/Main.php:204
-#: inc/core/admin.php:416
+#: inc/core/admin.php:425
 msgid "%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added."
 msgstr ""
 
@@ -77,7 +83,7 @@ msgstr ""
 
 #. translators: %s - Theme name
 #: dashboard/inc/Main.php:214
-#: inc/core/admin.php:424
+#: inc/core/admin.php:433
 msgid "Need more details? Please check our full documentation for detailed information on how to use %s."
 msgstr ""
 
@@ -98,11 +104,12 @@ msgstr ""
 
 #. translators: store name (Themeisle)
 #: dashboard/inc/Main.php:223
-#: globals/utilities.php:1347
+#: globals/utilities.php:1351
 #: header-footer-grid/Core/Builder/Footer.php:48
 #: header-footer-grid/Core/Builder/Header.php:51
-#: inc/core/admin.php:426
+#: inc/core/admin.php:435
 #: inc/customizer/controls/simple_upsell.php:64
+#: inc/customizer/controls/simple_upsell_section.php:62
 #: inc/customizer/options/upsells.php:46
 #: inc/customizer/options/upsells.php:106
 #: dashboard/src/Components/Content/FreePro.js:39
@@ -288,15 +295,16 @@ msgstr ""
 msgid "You appear to be running the Neve theme from source code. Please finish installation by running %s."
 msgstr ""
 
-#: globals/utilities.php:178
+#: globals/utilities.php:181
 #: header-footer-grid/Core/Components/Nav.php:189
 #: searchform.php:9
 #: woocommerce/product-searchform.php:14
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:125
+#: inc/customizer/controls/react/src/repeater/IconsContent.js:44
 msgid "Search"
 msgstr ""
 
-#: globals/utilities.php:1344
+#: globals/utilities.php:1348
 #: inc/customizer/options/upsells.php:115
 #: inc/customizer/options/upsells.php:120
 #: inc/customizer/options/upsells.php:129
@@ -310,24 +318,24 @@ msgstr ""
 msgid "Learn More"
 msgstr ""
 
-#: globals/utilities.php:1375
-#: globals/utilities.php:1423
+#: globals/utilities.php:1379
+#: globals/utilities.php:1427
 msgid "Base"
 msgstr ""
 
-#: globals/utilities.php:1390
-#: globals/utilities.php:1438
+#: globals/utilities.php:1394
+#: globals/utilities.php:1442
 msgid "Dark Mode"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:335
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:336
 #: header-footer-grid/Core/Settings/Manager.php:186
 #: inc/customizer/options/main.php:54
 msgid "Layout"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:340
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:341
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:342
 #: inc/admin/metabox/main.php:54
 #: inc/customizer/options/layout_container.php:142
 #: inc/customizer/options/layout_sidebar.php:177
@@ -335,8 +343,8 @@ msgstr ""
 msgid "Full Width"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:340
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:342
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:341
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:343
 #: inc/admin/metabox/main.php:53
 #: inc/customizer/options/layout_container.php:141
 #: inc/customizer/options/layout_single_post.php:499
@@ -344,15 +352,15 @@ msgstr ""
 msgid "Contained"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:358
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:359
 msgid "Row height"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:404
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:405
 msgid "Row Background"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:434
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:435
 #: header-footer-grid/Core/Components/Copyright.php:84
 #: header-footer-grid/Core/Components/CustomHtml.php:163
 #: header-footer-grid/Core/Components/Logo.php:205
@@ -363,53 +371,53 @@ msgstr ""
 msgid "Text Color"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:544
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:548
 #: header-footer-grid/Core/Builder/Header.php:38
 msgid "Header"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:627
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:631
 msgid "Section Content"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1802
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1813
 #: header-footer-grid/Core/Components/SearchResponsive.php:113
 msgid "Open Behaviour"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1807
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1818
 msgid "Slide from Left"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1808
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1819
 msgid "Slide from Right"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1809
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1820
 msgid "Pull from Left"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1810
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1821
 msgid "Pull from Right"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1811
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1822
 msgid "Full Canvas"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1812
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1823
 msgid "Slide Down"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1827
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1838
 msgid "Sidebar Width"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1890
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1901
 msgid "Number of Columns"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1907
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1918
 msgid "Columns Layout"
 msgstr ""
 
@@ -426,7 +434,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Builder/Footer.php:49
 #: header-footer-grid/Core/Builder/Header.php:52
-#: inc/core/admin.php:427
+#: inc/core/admin.php:436
 msgid "Read full documentation"
 msgstr ""
 
@@ -728,9 +736,9 @@ msgid "Items Hover Color"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:194
-#: header-footer-grid/Core/Magic_Tags.php:610
+#: header-footer-grid/Core/Magic_Tags.php:608
 #: header-footer-grid/templates/components/component-cart-icon.php:50
-#: inc/views/header.php:174
+#: inc/views/header.php:178
 msgid "Cart"
 msgstr ""
 
@@ -926,146 +934,146 @@ msgstr ""
 msgid "Search Components"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:501
+#: header-footer-grid/Core/Magic_Tags.php:499
 msgid "Single"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:504
+#: header-footer-grid/Core/Magic_Tags.php:502
 msgid "Current Single Title"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:508
+#: header-footer-grid/Core/Magic_Tags.php:506
 msgid "Current Single Excerpt"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:512
+#: header-footer-grid/Core/Magic_Tags.php:510
 msgid "Current Single URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:516
+#: header-footer-grid/Core/Magic_Tags.php:514
 msgid "Current Post Meta"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:520
+#: header-footer-grid/Core/Magic_Tags.php:518
 msgid "Author meta"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:524
+#: header-footer-grid/Core/Magic_Tags.php:522
 msgid "Date meta"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:528
+#: header-footer-grid/Core/Magic_Tags.php:526
 msgid "Category meta"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:532
+#: header-footer-grid/Core/Magic_Tags.php:530
 msgid "Comments meta"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:538
+#: header-footer-grid/Core/Magic_Tags.php:536
 msgid "Archive"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:541
+#: header-footer-grid/Core/Magic_Tags.php:539
 msgid "Archive Description"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:545
+#: header-footer-grid/Core/Magic_Tags.php:543
 msgid "Archive Title"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:549
+#: header-footer-grid/Core/Magic_Tags.php:547
 msgid "Archive URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:555
+#: header-footer-grid/Core/Magic_Tags.php:553
 #: inc/customizer/options/layout_blog.php:388
 #: inc/customizer/options/layout_single_post.php:639
 #: inc/views/partials/post_meta.php:179
 msgid "Author"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:558
+#: header-footer-grid/Core/Magic_Tags.php:556
 msgid "Author Bio"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:562
+#: header-footer-grid/Core/Magic_Tags.php:560
 msgid "Author Name"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:566
+#: header-footer-grid/Core/Magic_Tags.php:564
 msgid "Author URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:572
+#: header-footer-grid/Core/Magic_Tags.php:570
 msgid "Current User"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:575
+#: header-footer-grid/Core/Magic_Tags.php:573
 msgid "User Nice Name"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:579
+#: header-footer-grid/Core/Magic_Tags.php:577
 msgid "Display Name"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:583
+#: header-footer-grid/Core/Magic_Tags.php:581
 msgid "User Email"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:589
+#: header-footer-grid/Core/Magic_Tags.php:587
 msgid "Global"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:592
+#: header-footer-grid/Core/Magic_Tags.php:590
 msgid "Site Title"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:596
+#: header-footer-grid/Core/Magic_Tags.php:594
 msgid "Site Tagline"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:600
+#: header-footer-grid/Core/Magic_Tags.php:598
 msgid "Home URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:604
+#: header-footer-grid/Core/Magic_Tags.php:602
 msgid "Current Year"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:613
+#: header-footer-grid/Core/Magic_Tags.php:611
 msgid "Total + Currency Symbol"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:617
+#: header-footer-grid/Core/Magic_Tags.php:615
 msgid "Total"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:621
+#: header-footer-grid/Core/Magic_Tags.php:619
 msgid "Currency Name"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:625
+#: header-footer-grid/Core/Magic_Tags.php:623
 msgid "Currency Symbol"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:634
+#: header-footer-grid/Core/Magic_Tags.php:632
 msgid "WooCommerce"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:637
+#: header-footer-grid/Core/Magic_Tags.php:635
 msgid "Product Price"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:641
+#: header-footer-grid/Core/Magic_Tags.php:639
 msgid "Product Title"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:645
+#: header-footer-grid/Core/Magic_Tags.php:643
 msgid "Cart URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:649
+#: header-footer-grid/Core/Magic_Tags.php:647
 msgid "Checkout URL"
 msgstr ""
 
@@ -1178,21 +1186,21 @@ msgid "Enable Individual Content Width"
 msgstr ""
 
 #. translators: %s - post type
-#: inc/admin/metabox/manager.php:134
-#: inc/admin/metabox/manager.php:151
+#: inc/admin/metabox/manager.php:130
+#: inc/admin/metabox/manager.php:147
 msgid "%s Settings"
 msgstr ""
 
-#: inc/admin/metabox/manager.php:190
+#: inc/admin/metabox/manager.php:186
 msgid "Page Settings are now accessible from the top bar"
 msgstr ""
 
 #. translators: %1$s - Keyboard shortcut.   %2&s - svg icon
-#: inc/admin/metabox/manager.php:193
+#: inc/admin/metabox/manager.php:189
 msgid "Click the %1$s icon in the top bar or use the keyboard shortcut ( %2$s ) to customise the layout settings for this page"
 msgstr ""
 
-#: inc/admin/metabox/manager.php:200
+#: inc/admin/metabox/manager.php:196
 msgid "or"
 msgstr ""
 
@@ -1219,6 +1227,48 @@ msgstr ""
 
 #: inc/admin/plugin_install/main.php:171
 msgid "Activating "
+msgstr ""
+
+#: inc/admin/troubleshoot/main.php:41
+#: inc/admin/troubleshoot/main.php:79
+#: inc/admin/troubleshoot/main.php:93
+msgid "API connectivity"
+msgstr ""
+
+#: inc/admin/troubleshoot/main.php:42
+msgid "Yes"
+msgstr ""
+
+#: inc/admin/troubleshoot/main.php:42
+#: inc/admin/troubleshoot/main.php:47
+#: inc/admin/troubleshoot/main.php:52
+msgid "No"
+msgstr ""
+
+#: inc/admin/troubleshoot/main.php:46
+msgid "Child theme files"
+msgstr ""
+
+#: inc/admin/troubleshoot/main.php:51
+msgid "Customizer Custom CSS"
+msgstr ""
+
+#. translators: Theme Name
+#: inc/admin/troubleshoot/main.php:102
+msgid "API for %s is reachable."
+msgstr ""
+
+#: inc/admin/troubleshoot/main.php:110
+msgid "Can not connect to API"
+msgstr ""
+
+#. translators: Theme Name
+#: inc/admin/troubleshoot/main.php:115
+msgid "API for %s is reachable on your site."
+msgstr ""
+
+#: inc/compatibility/amp.php:375
+msgid "Page"
 msgstr ""
 
 #: inc/compatibility/block-patterns/dark-header-centered-content.php:9
@@ -1360,36 +1410,36 @@ msgctxt "Theme starter content"
 msgid "Blog"
 msgstr ""
 
-#: inc/compatibility/woocommerce.php:434
+#: inc/compatibility/woocommerce.php:430
 msgid "Filter"
 msgstr ""
 
-#: inc/core/admin.php:380
+#: inc/core/admin.php:389
 msgid "Congratulations!"
 msgstr ""
 
 #. translators: %s - theme name
-#: inc/core/admin.php:383
+#: inc/core/admin.php:392
 msgid "%s is now installed and ready to use. We've assembled some links to get you started."
 msgstr ""
 
-#: inc/core/admin.php:392
+#: inc/core/admin.php:401
 msgid "Try one of our ready to use Starter Sites"
 msgstr ""
 
-#: inc/core/admin.php:397
+#: inc/core/admin.php:406
 msgid "Return to your dashboard"
 msgstr ""
 
-#: inc/core/admin.php:403
+#: inc/core/admin.php:412
 msgid "or go to the theme settings"
 msgstr ""
 
-#: inc/core/admin.php:414
+#: inc/core/admin.php:423
 msgid "Sites Library"
 msgstr ""
 
-#: inc/core/admin.php:422
+#: inc/core/admin.php:431
 #: dashboard/src/Components/Content/Help.js:40
 msgid "Documentation"
 msgstr ""
@@ -1398,24 +1448,24 @@ msgstr ""
 msgid "Shop Sidebar"
 msgstr ""
 
-#: inc/customizer/base_customizer.php:345
+#: inc/customizer/base_customizer.php:346
 msgid "Boxed layout"
 msgstr ""
 
-#: inc/customizer/base_customizer.php:421
+#: inc/customizer/base_customizer.php:422
 msgid "Section padding"
 msgstr ""
 
-#: inc/customizer/base_customizer.php:446
+#: inc/customizer/base_customizer.php:447
 msgid "Background color"
 msgstr ""
 
-#: inc/customizer/base_customizer.php:467
+#: inc/customizer/base_customizer.php:468
 #: inc/customizer/options/layout_single_post.php:381
 msgid "Text color"
 msgstr ""
 
-#: inc/customizer/controls/upsell_control.php:96
+#: inc/customizer/controls/upsell_control.php:95
 msgid "PRO"
 msgstr ""
 
@@ -2042,47 +2092,47 @@ msgstr ""
 msgid "Search Results for: %s"
 msgstr ""
 
-#: inc/views/partials/comments.php:81
+#: inc/views/partials/comments.php:90
 msgid "Comments are closed."
 msgstr ""
 
-#: inc/views/partials/comments.php:128
+#: inc/views/partials/comments.php:137
 msgid "Comments Navigation"
 msgstr ""
 
-#: inc/views/partials/comments.php:133
+#: inc/views/partials/comments.php:142
 msgid "Previous"
 msgstr ""
 
-#: inc/views/partials/comments.php:136
+#: inc/views/partials/comments.php:145
 msgid "Next"
 msgstr ""
 
-#: inc/views/partials/comments.php:159
+#: inc/views/partials/comments.php:182
 msgid "Pingback:"
 msgstr ""
 
-#: inc/views/partials/comments.php:161
-#: inc/views/partials/comments.php:240
+#: inc/views/partials/comments.php:184
+#: inc/views/partials/comments.php:267
 #: inc/customizer/controls/react/src/common/CustomPalette.js:18
 msgid "Edit"
 msgstr ""
 
 #. translators: 1: date, 2: time
-#: inc/views/partials/comments.php:195
+#: inc/views/partials/comments.php:218
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: inc/views/partials/comments.php:215
+#: inc/views/partials/comments.php:238
 msgid "Comment awaiting moderation."
 msgstr ""
 
-#: inc/views/partials/comments.php:246
+#: inc/views/partials/comments.php:273
 msgid "Reply"
 msgstr ""
 
 #. translators: number of comments
-#: inc/views/partials/comments.php:274
+#: inc/views/partials/comments.php:301
 msgctxt "comments title"
 msgid "%1$s thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
@@ -2118,7 +2168,7 @@ msgstr ""
 msgid "next"
 msgstr ""
 
-#: inc/views/product_layout.php:67
+#: inc/views/product_layout.php:72
 msgid "Out of stock"
 msgstr ""
 
@@ -2647,11 +2697,15 @@ msgstr ""
 
 #: inc/customizer/controls/react/src/ordering/Ordering.js:18
 #: inc/customizer/controls/react/src/ordering/Ordering.js:20
+#: inc/customizer/controls/react/src/repeater/RepeaterItem.js:10
+#: inc/customizer/controls/react/src/repeater/RepeaterItem.js:12
 msgid "Drag to Reorder"
 msgstr ""
 
 #: inc/customizer/controls/react/src/ordering/Ordering.js:48
 #: inc/customizer/controls/react/src/ordering/Ordering.js:50
+#: inc/customizer/controls/react/src/repeater/RepeaterItem.js:61
+#: inc/customizer/controls/react/src/repeater/RepeaterItem.js:63
 msgid "Toggle Visibility"
 msgstr ""
 
@@ -2749,6 +2803,26 @@ msgstr ""
 
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:149
 msgid "Accessibility"
+msgstr ""
+
+#: inc/customizer/controls/react/src/repeater/Repeater.js:98
+msgid "Done"
+msgstr ""
+
+#: inc/customizer/controls/react/src/repeater/Repeater.js:98
+msgid "Reorder"
+msgstr ""
+
+#: inc/customizer/controls/react/src/repeater/Repeater.js:107
+msgid "Add Item"
+msgstr ""
+
+#: inc/customizer/controls/react/src/repeater/RepeaterItem.js:41
+msgid "Item"
+msgstr ""
+
+#: inc/customizer/controls/react/src/repeater/RepeaterItemContent.js:105
+msgid "Remove"
 msgstr ""
 
 #: inc/customizer/controls/react/src/typeface/Typeface.js:79

@@ -1151,6 +1151,7 @@ label {
 
 fieldset {
   padding: 20px 30px;
+  margin-bottom: 20px;
   border: 2px solid var(--nv-light-bg);
 }
 
@@ -1660,10 +1661,6 @@ body .layout-grid > .article-content-col, .layout-grid {
   list-style: none;
 }
 
-#comments ol ol li {
-  padding-left: 40px;
-}
-
 #comments textarea {
   max-width: 100%;
   width: 100%;
@@ -1728,6 +1725,10 @@ body .layout-grid > .article-content-col, .layout-grid {
 
 .nv-comments-list {
   margin-bottom: 80px;
+}
+
+.nv-comments-list .children li:not(.children) {
+  padding-left: 40px;
 }
 
 ul.page-numbers {
