@@ -509,9 +509,16 @@ add_action( 'woocommerce_before_single_product', 'add_select_country_state', 15 
 //add_action( 'woocommerce_before_main_content', 'add_select_country_state', 15 );
 function add_select_country_state() {
     $prod_id = get_the_ID();
-    if( has_term( 'rayco', 'product_cat' , $prod_id) ) {
+    $prod_title = get_the_title();
+    if( has_term( 'rayco', 'product_cat' , $prod_id) == true && strpos($prod_title, 'Pantalla 32') == false) {
         
         echo '<div class="woocommerce-info">Este servicio de alquiler es prestado, entregado y facturado por Distribuidora Rayco. <strong>Solamente disponible en Cali, Cartagena y Bucaramanga.</strong></div>';
+        /*echo '<div class="woocommerce-info">Selecciona tu departamento: '.do_shortcode('[vcwccr_country_selector]').'</div>';*/
+    }
+
+    else if ( has_term( 'rayco', 'product_cat' , $prod_id) == true && strpos($prod_title, 'Pantalla 32') == true )  {
+        
+        echo '<div class="woocommerce-info">Este servicio de alquiler es prestado, entregado y facturado por Distribuidora Rayco. <strong>Solamente disponible en Bogotá, Cali, Cartagena y Bucaramanga.</strong></div>';
         /*echo '<div class="woocommerce-info">Selecciona tu departamento: '.do_shortcode('[vcwccr_country_selector]').'</div>';*/
     }
     
