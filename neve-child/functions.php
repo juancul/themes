@@ -530,7 +530,6 @@ add_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_t
 
 
 // Move Woocommerce category description to below product loop
-/* Fix not working
 
 
 function nv_remove_category_description_before_loop() {
@@ -540,6 +539,6 @@ function nv_remove_category_description_before_loop() {
 }
 
 add_action( 'wp_loaded', 'nv_remove_category_description_before_loop', 100 );
-*/
+
 
 
