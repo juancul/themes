@@ -62,15 +62,15 @@ $allowed_html = array(
 
           </script>";*/
 
-        echo "<h3 id='cul-verify-id'>Verifica tu identidad</h3>";
+        //echo "<h3 id='cul-verify-id'>Verifica tu identidad</h3>";
         //echo "<p>Es obligatorio que sigas el proceso de verificación para poder despachar tu pedido:</p>";
-        echo '<center>';
+        //echo '<center>';
         /*echo '<div class="wp-block-buttons">
 <div class="wp-block-button is-style-secondary"><a class="wp-block-button__link has-background has-neve-link-color-background-color" href="#tot_get_verified">Verifica tu identidad</a></div>
 </div>';*/
-        echo do_shortcode( '[tot-reputation-status auto-launch-when-not-verified="false"]' );
+        //echo do_shortcode( '[tot-reputation-status auto-launch-when-not-verified="false"]' );
         //echo do_shortcode( '[tot-wp-embed tot-widget="accountConnector" verification-model="person"][/tot-wp-embed]');
-        echo "</center><hr>";
+        //echo "</center><hr>";
         echo "<br><h3 id='questions-form'>Responde las siguientes preguntas para poder despachar tu alquiler</h3>";
         echo "<br><p>Por favor responde con sinceridad, en algunos casos solicitaremos corroborar las respuestas con solicitudes posteriores, por ejemplo un certificado laboral.</p>";
         echo do_shortcode( '[user-meta-profile form="User Extra Info"]' );
